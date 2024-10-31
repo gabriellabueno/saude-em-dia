@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="br.edu.fatec.diariosaude.view.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_controle"
+        android:name="br.edu.fatec.diariosaude.view.controle.ControleFragment"
+        android:label="@string/menu_controle"
+        tools:layout="@layout/fragment_controle" />
+
+    <fragment
+        android:id="@+id/nav_cadastro"
+        android:name="br.edu.fatec.diariosaude.view.cadastro.CadastroFragment"
+        android:label="@string/menu_cadastro"
+        tools:layout="@layout/fragment_cadastro" />
+
+    <fragment
+        android:id="@+id/nav_sugestao"
+        android:name="br.edu.fatec.diariosaude.view.sugestao.SugestaoFragment"
+        android:label="@string/menu_sugestoes"
+        tools:layout="@layout/fragment_sugestao" />
+
+
+</navigation>
