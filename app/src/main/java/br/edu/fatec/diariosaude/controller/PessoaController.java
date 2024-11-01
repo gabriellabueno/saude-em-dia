@@ -25,12 +25,17 @@ public class PessoaController {
 
     public void update(Pessoa pessoa) {
         dao = new PessoaDAO(context);
-       // dao.update(pessoa);
+        dao.update(pessoa);
     }
 
     public void delete(Pessoa pessoa) {
         dao = new PessoaDAO(context);
-      //  dao.delete(pessoa);
+        dao.delete(pessoa);
+    }
+
+    public Pessoa read(Integer id) {
+        dao = new PessoaDAO(context);
+        return dao.read(id);
     }
 
     public List<Pessoa> listAll() {
