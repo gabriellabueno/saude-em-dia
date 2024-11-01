@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.cadastro.CadastroFragment">
+    tools:context=".view.cadastro.CadastroFragment"
+    android:id="@+id/fragment_cadastro"
+    >
 
     <!-- Layout Principal -->
     <LinearLayout
@@ -187,6 +189,7 @@
         <!-- Botão Cadastrar -->
         <Button
             android:id="@+id/btnCadastrar"
+            android:layout_marginTop="60dp"
             style="@style/botao"
             android:backgroundTint="@color/cor_secundaria"
             android:text="Cadastrar" />

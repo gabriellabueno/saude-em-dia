@@ -43,7 +43,7 @@ public class PessoaController {
     }
 
     public void updateTable() {
-        dao.updateTable();
+        dao.updateTableID();
     }
 
     public void mostrarMensagem(String mensagem) {

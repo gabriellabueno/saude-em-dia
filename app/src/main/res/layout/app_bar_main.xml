@@ -25,7 +25,7 @@
 
     <!-- Define gráfico de navegação -->
     <fragment
-        android:id="@+id/nav_host_fragment_content_main"
+        android:id="@+id/nav_fragment_content_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,6 +33,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <!-- Botão Flutuante -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

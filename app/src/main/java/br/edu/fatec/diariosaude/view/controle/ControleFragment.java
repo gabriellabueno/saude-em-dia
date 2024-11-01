@@ -1,6 +1,5 @@
 package br.edu.fatec.diariosaude.view.controle;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,14 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
 import br.edu.fatec.diariosaude.model.Pessoa;
-import br.edu.fatec.diariosaude.view.manutencao.ManutencaoActivity;
 
 public class ControleFragment extends Fragment {
 
@@ -27,6 +27,7 @@ public class ControleFragment extends Fragment {
 
     // Adapter para apresentar dados no ListView
     PessoaAdapter adapter;
+
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,15 +55,27 @@ public class ControleFragment extends Fragment {
 
             // Obtém o pessoa clicada
             Pessoa pessoaSelecionada = adapter.getItem(position);
+            Integer pessoaSelecionadaID = pessoaSelecionada.getId();
 
-            // Envia ID de pessoaSelecionada para Activity Manutenção
-            Intent it = new Intent(getContext(), ManutencaoActivity.class);
-            it.putExtra("id-pessoa-selecionada", pessoaSelecionada.getId());
-            startActivity(it);
+
+            if(pessoaSelecionadaID != null) {
+                NavController navController = NavHostFragment.findNavController(this);
+                Bundle bundle = new Bundle();
+                bundle.putInt("pessoaSelecionadaID", pessoaSelecionadaID);
+                navController.navigate(R.id.action_controle_to_manutencao, bundle);
+            }
+
         });
 
         return view;
     }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
 
     @Override
     public void onResume() {
@@ -73,6 +86,7 @@ public class ControleFragment extends Fragment {
             controller.updateTable();
     }
 
+
     // Listar todos os alunos na ListvIiew
     public List<Pessoa> listAll() {
 
@@ -82,8 +96,10 @@ public class ControleFragment extends Fragment {
         // Envia array para adapter
         adapter = new PessoaAdapter(getContext(), pessoas);
 
-        // Poupula ListView com itens do array
+        // Popula ListView com itens do array
         listViewControle.setAdapter(adapter);
         return pessoas;
     }
+
+
 }

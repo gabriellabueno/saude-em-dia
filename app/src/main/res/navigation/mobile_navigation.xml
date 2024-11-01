@@ -11,13 +11,21 @@
         android:id="@+id/nav_home"
         android:name="br.edu.fatec.diariosaude.view.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_home_to_cadastro"
+        app:destination="@id/nav_cadastro"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_controle"
         android:name="br.edu.fatec.diariosaude.view.controle.ControleFragment"
         android:label="@string/menu_controle"
-        tools:layout="@layout/fragment_controle" />
+        tools:layout="@layout/fragment_controle">
+        <action
+            android:id="@+id/action_controle_to_manutencao"
+            app:destination="@id/nav_manutencao" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_cadastro"
@@ -30,6 +38,15 @@
         android:name="br.edu.fatec.diariosaude.view.sugestao.SugestaoFragment"
         android:label="@string/menu_sugestoes"
         tools:layout="@layout/fragment_sugestao" />
+
+    <fragment
+        android:id="@+id/nav_manutencao"
+        android:name="br.edu.fatec.diariosaude.view.manutencao.ManutencaoFragment"
+        android:label="Manutenção" >
+        <argument
+            android:name="pessoaSelecionadaID"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>

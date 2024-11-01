@@ -1,10 +1,12 @@
-package br.edu.fatec.diariosaude.view.cadastro;
+package br.edu.fatec.diariosaude.view.manutencao;
 
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +20,11 @@ import android.widget.Switch;
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
 import br.edu.fatec.diariosaude.model.Pessoa;
+import br.edu.fatec.diariosaude.view.cadastro.CadastroViewModel;
 
-public class CadastroFragment extends Fragment {
+public class ManutencaoFragment extends Fragment {
 
-    private CadastroViewModel viewModel;
+    private ManutencaoViewModel viewModel;
 
     // Variáveis para componentes XML
     private EditText edtNome;
@@ -35,9 +38,10 @@ public class CadastroFragment extends Fragment {
     private CheckBox rdbDiabetes;
     private CheckBox rdbHipertensao;
     private CheckBox rdbCardiopatia;
-    private Button btnCadastrar;
+    private Button btnAtualizar;
+    private Button btnExcluir;
 
-    // Variáveis para Controller
+    // Variáveis para controller:
     private PessoaController pessoaController;
     private Pessoa pessoa;
 
@@ -47,15 +51,17 @@ public class CadastroFragment extends Fragment {
     private Integer gestante;
     private Integer sedentario;
 
+    // Variável para manipular pessoa selecionada em Controle
+    private Integer pessoaSelecionadaID;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Infla o layout do Fragment
-        View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
+        View view = inflater.inflate(R.layout.fragment_manutencao, container, false);
         // Inicializa a ViewModel associada ao Fragment
-        viewModel = new ViewModelProvider(this).get(CadastroViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ManutencaoViewModel.class);
 
         // Inicializa Controller
         pessoaController = new PessoaController(this.getContext());
@@ -72,57 +78,38 @@ public class CadastroFragment extends Fragment {
         rdbDiabetes = view.findViewById(R.id.rdbDiabetes);
         rdbHipertensao = view.findViewById(R.id.rdbHipertensao);
         rdbCardiopatia = view.findViewById(R.id.rdbCardiopatia);
-        btnCadastrar = view.findViewById(R.id.btnCadastrar);
+        btnAtualizar = view.findViewById(R.id.btnAtualizar);
+        btnExcluir = view.findViewById(R.id.btnExcluir);
+
+        // Recebe ID da pessoa selecionada da tela Controle
+        if (getArguments() != null) {
+            pessoaSelecionadaID = getArguments().getInt("pessoaSelecionadaID");
+        }
+
+        // Busca dados a partir do ID e armazena em instância de Pessoa
+        pessoa = pessoaController.read(pessoaSelecionadaID);
+
+        // Preenche campos de inputs com os dados retornados
+        setInputs(pessoa);
 
 
-
-        // CONDICIONAL RADIO BUTTON FEMININO
-        // Listener para mudanças na seleção dos RadioButtons
-        viewModel.isFemininoSelected().observe(getViewLifecycleOwner(), isSelected -> {
-
-            if(isSelected) {
-                swtGestante.setVisibility(View.VISIBLE);
-                sexo = 1;
-            } else {
-                swtGestante.setVisibility(View.GONE);
-                sexo = 0;
-            }
-
-        });
-
-        // Listener para o RadioButton Feminino
-        rdbFeminino.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Atualiza a seleção na ViewModel quando o estado do RadioButton muda
-            viewModel.setFemininoSelected(isChecked);
-        });
-
-
-        // SWITCH GESTANTE
-        viewModel.isGestanteSelected().observe(getViewLifecycleOwner(), isSelected -> {
-            gestante = isSelected ? 1 : 0;
-        });
-
-        swtGestante.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            viewModel.setGestanteSelected(isChecked);
-        });
-
-
-        // SWITCH SEDENTARIO
-        viewModel.isSedentarioSelected().observe(getViewLifecycleOwner(), isSelected -> {
-            sedentario = isSelected ? 1 : 0;
-        });
-
-        swtSedentario.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            viewModel.setSedentarioSelected(isChecked);
-        });
-
-
-        // BOTÃO CADASTRAR
-        btnCadastrar.setOnClickListener(v -> {
+        // Botão Atualizar
+        btnAtualizar.setOnClickListener(v -> {
             pessoa = getInputs();
-            pessoaController.create(pessoa);
-            pessoaController.mostrarMensagem("inserida");
+            pessoa.setId(pessoaSelecionadaID);
+            pessoaController.update(pessoa);
+            pessoaController.mostrarMensagem("atualizada");
         });
+
+
+        //Botão Excluir
+        btnExcluir.setOnClickListener(v -> {
+            pessoa = new Pessoa();
+            pessoa.setId(pessoaSelecionadaID);
+            pessoaController.delete(pessoa);
+            pessoaController.mostrarMensagem("removida");
+        });
+
 
 
         return view;
@@ -147,6 +134,25 @@ public class CadastroFragment extends Fragment {
         pessoa.setSedentario(sedentario);
 
         return pessoa;
+    }
+
+    // Preenche campos de inputs com os dados da pessoa para Manutencao
+    public void setInputs(Pessoa pessoa) {
+        edtNome.setText(pessoa.getNome());
+        edtIdade.setText(String.valueOf(pessoa.getIdade()));
+        edtAltura.setText(String.valueOf(pessoa.getAltura()));
+        edtPeso.setText(String.valueOf(pessoa.getPeso()));
+
+        if(pessoa.getSexo() == 1)
+            rdbFeminino.setChecked(true);
+        else
+            rdbMasculino.setChecked(true);
+
+        if(pessoa.isGestante() == 1)
+            swtGestante.setVisibility(View.VISIBLE);
+
+        if(pessoa.isSedentario() == 1)
+            swtSedentario.setChecked(true);
     }
 
 

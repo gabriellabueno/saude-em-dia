@@ -2,8 +2,6 @@ package br.edu.fatec.diariosaude.model;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 public class Pessoa {
     private Integer id;
     private String nome;

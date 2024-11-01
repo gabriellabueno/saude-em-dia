@@ -33,10 +33,10 @@
     <style name="botao">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">80dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:paddingVertical">12dp</item>
+        <item name="backgroundTint">@color/cor_secundaria</item>
     </style>
 
     <!-- ITENS LISTVIEW -->

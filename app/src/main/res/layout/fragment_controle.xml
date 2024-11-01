@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.controle.ControleFragment"
     android:paddingVertical="50dp"
+    android:id="@+id/fragment_controle"
     android:paddingHorizontal="30dp"
     >
 

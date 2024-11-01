@@ -25,8 +25,6 @@ public class PessoaDAO {
     private static final String sedentario = "peso";
     String[] args = {id, nome, idade, altura, peso, sexo, gestante, sedentario};
 
-    // !!! Necessário criar método UPDATE para tela de Manutenção
-
     // Construtor
     public PessoaDAO(Context context){
         // Abre conexão com BD
@@ -51,7 +49,62 @@ public class PessoaDAO {
         return banco.insert(table, null, values);
     }
 
+    // UPDATE
+    public void update(Pessoa pessoa) {
+        ContentValues values = new ContentValues();
+
+        values.put(nome, pessoa.getNome());
+        values.put(idade, pessoa.getIdade());
+        values.put(altura, pessoa.getAltura());
+        values.put(peso, pessoa.getPeso());
+        values.put(sexo, pessoa.getSexo());
+
+        String[] idPessoa = {String.valueOf(pessoa.getId())};
+
+        banco.update(table, values, "id=?", idPessoa);
+    }
+
+    // Reseta ID da tabela "pessoa"
+    public void updateTableID() {
+        banco.delete("sqlite_sequence", "name = ?", new String[]{table});
+        banco.delete(table, null, null);
+    }
+
+
+    // DELETE
+    public void delete(Pessoa pessoa) {
+        String[] idPessoa = {String.valueOf(pessoa.getId())};
+
+        banco.delete(table,"id=?", idPessoa);
+    }
+
+
     // READ
+    public Pessoa read(Integer id) {
+        String idPessoa[] = {String.valueOf(id)};
+
+        Cursor cursor = banco.query(table, args,
+                "id=?", idPessoa, null, null, null);
+
+        cursor.moveToFirst();
+
+        Pessoa pessoa = new Pessoa();
+
+        // Percorre todas as colunas do registro
+        if(cursor.getCount() > 0){
+            pessoa.setNome(cursor.getString(1));
+            pessoa.setIdade(cursor.getInt(2));
+            pessoa.setAltura(cursor.getFloat(3));
+            pessoa.setPeso(cursor.getFloat(4));
+            pessoa.setSexo(cursor.getInt(5));
+            pessoa.setGestante(cursor.getInt(6));
+            pessoa.setSedentario(cursor.getInt(7));
+        }
+        return pessoa;
+    }
+
+    // Retorna uma lista com todos os registros
+    // para apresentar no ListView
     public List<Pessoa> listAll() {
         List<Pessoa> pessoas = new ArrayList<>(); // Array de pessoas
 
@@ -72,84 +125,6 @@ public class PessoaDAO {
 
         cursor.close();
         return pessoas;
-    }
-
-    // UPDATE
-    public void update(Pessoa pessoa) { // Recebe objeto Aluno
-        ContentValues values = new ContentValues();
-
-        values.put(nome, pessoa.getNome());
-        values.put(idade, pessoa.getIdade());
-        values.put(altura, pessoa.getAltura());
-        values.put(peso, pessoa.getPeso());
-        values.put(sexo, pessoa.getSexo());
-
-        // Pega ID da pessoa para consulta SQL
-        String[] idPessoa = {String.valueOf(pessoa.getId())};
-
-        // id=? - condição para comando SQL
-        banco.update(table, values, "id=?", idPessoa);
-    }
-
-    // O método updateTable() atualiza apenas o ID da tabela do BD
-    public void updateTable() {
-        // Reseta o ID do banco de dados
-        banco.delete("sqlite_sequence", "name = ?", new String[]{table});
-        banco.delete(table, null, null);
-    }
-
-    // DELETE
-    public void delete(Pessoa pessoa) {
-        // Pega ID da pessoa para consulta SQL
-        String[] idPessoa = {String.valueOf(pessoa.getId())};
-
-        // id=? - condição para comando SQL
-        banco.delete(table,"id=?", idPessoa);
-    }
-
-    //NÃO SEI SE FUNCIONA
-    public Pessoa findById(Pessoa pessoa) {
-        String[] idPessoa = {String.valueOf(pessoa.getId())};
-
-        Cursor cursor = banco.query(table, args, "id=?", idPessoa, null, null, null);
-
-        if (cursor.moveToFirst()) {
-            pessoa.setNome(cursor.getString(1));
-            pessoa.setIdade(cursor.getInt(2));
-            pessoa.setAltura(cursor.getFloat(3));
-            pessoa.setPeso(cursor.getFloat(4));
-            pessoa.setSexo(cursor.getInt(5));
-            pessoa.setGestante(cursor.getInt(6));
-            pessoa.setSedentario(cursor.getInt(7));
-
-            cursor.close();
-            return pessoa;
-        } else {
-            cursor.close();
-            return null; // Não encontrou a pessoa
-        }
-    }
-
-    public Pessoa read(Integer id) {
-        String idPessoa[] = {String.valueOf(id)};
-
-        Cursor cursor = banco.query(table, args,
-                "id=?", idPessoa, null, null, null);
-
-        cursor.moveToFirst();
-
-        Pessoa pessoa = new Pessoa();
-
-        if(cursor.getCount() > 0){
-            pessoa.setNome(cursor.getString(1));
-            pessoa.setIdade(cursor.getInt(2));
-            pessoa.setAltura(cursor.getFloat(3));
-            pessoa.setPeso(cursor.getFloat(4));
-            pessoa.setSexo(cursor.getInt(5));
-            pessoa.setGestante(cursor.getInt(6));
-            pessoa.setSedentario(cursor.getInt(7));
-        }
-        return pessoa;
     }
 
 }
