@@ -196,6 +196,7 @@
             <Button
                 android:id="@+id/btnAtualizar"
                 style="@style/botao"
+                android:backgroundTint="@color/cor_secundaria"
                 android:gravity="center"
                 android:text="Atualizar" />
 
@@ -208,6 +209,7 @@
             <Button
                 android:id="@+id/btnExcluir"
                 style="@style/botao"
+                android:backgroundTint="@color/cor_secundaria"
                 android:gravity="center"
                 android:text="Excluir" />
         </LinearLayout>

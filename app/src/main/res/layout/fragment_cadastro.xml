@@ -187,9 +187,9 @@
         <!-- Botão Cadastrar -->
         <Button
             android:id="@+id/btnCadastrar"
-            android:text="Cadastrar"
             style="@style/botao"
-            />
+            android:backgroundTint="@color/cor_secundaria"
+            android:text="Cadastrar" />
 
     </LinearLayout>
 
