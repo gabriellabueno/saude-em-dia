@@ -15,7 +15,7 @@ import java.util.List;
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
 import br.edu.fatec.diariosaude.model.Pessoa;
-import br.edu.fatec.diariosaude.view.manutencao.Manutencao;
+import br.edu.fatec.diariosaude.view.manutencao.ManutencaoActivity;
 
 public class ControleFragment extends Fragment {
 
@@ -56,7 +56,7 @@ public class ControleFragment extends Fragment {
             Pessoa pessoaSelecionada = adapter.getItem(position);
 
             // Envia ID de pessoaSelecionada para Activity Manutenção
-            Intent it = new Intent(getContext(), Manutencao.class);
+            Intent it = new Intent(getContext(), ManutencaoActivity.class);
             it.putExtra("id-pessoa-selecionada", pessoaSelecionada.getId());
             startActivity(it);
         });
