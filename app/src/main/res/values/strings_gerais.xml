@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- FIXAS SEMPRE (ANTES DE SUGESTÕES PERSONALIZADAS, IRÃO AS SUGESTÕES GERAIS) -->
+
+    <string name="txt_introducao">
+        <b>Bem-vindo ao Saúde em Dia!</b>\n
+        Sua jornada para uma vida saudável começa aqui.
+        Nós acreditamos que cada pessoa é única, e por isso oferecemos
+        sugestões personalizadas de alimentação e exercícios físicos,
+        levando em consideração suas características corporais.\n
+        <b>Com o Saúde em Dia, você terá acesso a:\n</b>
+        <u>Planos de Alimentação Personalizados:</u> Dicas de refeições saudáveis adaptadas às suas necessidades.\n
+        <u>Rotinas de Exercícios:</u> Sugestões de atividades físicas que se encaixam no seu perfil e estilo de vida.\n
+        Prepare-se para transformar sua saúde e bem-estar de forma simples e eficaz.\n<b>Vamos juntos nessa jornada!</b></string>
+
+    <string name="txt_sugestoes_nutricionais_gerais">
+        \nA <u>Organização Mundial da Saúde (OMS)</u> atualizou as recomendações
+        alimentares sobre o consumo de carboidratos e gorduras para adultos e crianças.
+        As novas diretrizes visam à limitação do consumo para a redução de ganho de peso
+        prejudicial à saúde. Evidências científicas mostram a relação entre a ingestão
+        excessiva desses produtos e os riscos de doenças. A qualidade e a quantidade são
+        ambas importantes para uma boa saúde, conforme indica a OMS.\n\n</string>
+
+    <string name="txt_exercicios_gerais">\n
+        <b>-</b> Atividades físicas quando praticadas regularmente trazem inúmeros benefícios para a saúde corporal e mental.\n
+        <b>-</b> Qualquer quantidade de atividade física é melhor do que nenhuma, e quanto mais, melhor.\n
+        <b>-</b> Deve-se começar com pequenas quantidades de atividade física e aumentar gradualmente a frequência, intensidade e a duração.
+    </string>
+</resources>

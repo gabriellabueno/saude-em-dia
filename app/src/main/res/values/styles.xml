@@ -73,4 +73,12 @@
         <item name="android:textAlignment">textStart</item>
         <item name="android:textSize">20dp</item>
     </style>
+
+    <style name="txt_titulos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

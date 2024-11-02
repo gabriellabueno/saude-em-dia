@@ -17,47 +17,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_manutencao">Manutencao</string>
 
-    <string name="txt_introducao">
-        <b>Bem-vindo ao Saúde em Dia!</b>\n
-        Sua jornada para uma vida saudável começa aqui.
-        Nós acreditamos que cada pessoa é única, e por isso oferecemos
-        sugestões personalizadas de alimentação e exercícios físicos,
-        levando em consideração suas características corporais.\n
-        <b>Com o Saúde em Dia, você terá acesso a:\n</b>
-        <u>Planos de Alimentação Personalizados:</u> Dicas de refeições saudáveis adaptadas às suas necessidades.\n
-        <u>Rotinas de Exercícios:</u> Sugestões de atividades físicas que se encaixam no seu perfil e estilo de vida.\n
-        Prepare-se para transformar sua saúde e bem-estar de forma simples e eficaz.\n<b>Vamos juntos nessa jornada!</b></string>
+    <string name="titulo_sugestoes_alimentares">Sugestões Alimentares</string>
+    <string name="titulo_dicas_nutricionais">Dicas Nutricionais</string>
+    <string name="titulo_atividade_fisica">Sugestões de Atividade Física</string>
 
-    <string name="txt_sugestoes_nutricionais_gerais">
-        <b>Sugestões Nutricionais</b>\n\n
-        A <u>Organização Mundial da Saúde (OMS)</u> atualizou as recomendações
-        alimentares sobre o consumo de carboidratos e gorduras para adultos e crianças.
-        As novas diretrizes visam à limitação do consumo para a redução de ganho de peso
-        prejudicial à saúde. Evidências científicas mostram a relação entre a ingestão
-        excessiva desses produtos e os riscos de doenças. A qualidade e a quantidade são
-        ambas importantes para uma boa saúde, conforme indica a OMS.</string>
-    <string name="txt_sugestoes_nutricionais_idosos">
-        <b>Sugestões Alimentares</b>\n\n
-        <b>Frutas e Vegetais:</b> Inclua uma variedade de frutas e vegetais coloridos.
-        Eles são ricos em vitaminas, minerais e fibras. Opte por frutas frescas,
-        congeladas ou secas sem adição de açúcar.\n
-        <b>Grãos Integrais:</b> Prefira grãos integrais como arroz integral, quinoa,
-        aveia e pães integrais. Eles fornecem mais fibras e nutrientes do que grãos refinados.\n
-        <b>Proteínas Magras:</b> Consuma fontes de proteína magra, como frango, peixe, ovos, leguminosas
-        (feijão, lentilha) e tofu. Isso ajuda a manter a massa muscular.
-        <b>Laticínios:</b> Inclua laticínios com baixo teor de gordura, como leite, iogurte e queijos.
-        Eles são boas fontes de cálcio e vitamina D, essenciais para a saúde óssea.\n
-        <b>Gorduras Saudáveis:</b> Utilize gorduras saudáveis, como azeite de oliva, abacate e nozes.
-        Essas gorduras são benéficas para o coração e ajudam a absorver nutrientes.\n\n
-    </string>
-    <string name="txt_dicas_alimentares_idosos">
-        <b>Sugestões Alimentares</b>\n
-        <b>Frutas e Vegetais:</b> Inclua uma variedade de frutas e vegetais coloridos.
-        Eles são ricos em vitaminas, minerais e fibras. Opte por frutas frescas,
-        congeladas ou secas sem adição de açúcar.\n
-        <b>Grãos Integrais:</b> Prefira grãos integrais como arroz integral, quinoa,
-        aveia e pães integrais. Eles fornecem mais fibras e nutrientes do que grãos refinados.\n
-        <b>Proteínas Magras:</b> Consuma fontes de proteína magra, como frango, peixe, ovos, leguminosas
-        (feijão, lentilha) e tofu. Isso ajuda a manter a massa muscular.
-    </string>
 </resources>
