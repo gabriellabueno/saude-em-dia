@@ -49,4 +49,28 @@
         <item name="android:padding">3dp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <!-- TEXTVIEW HOME - CENTRALIZADO 16dp -->
+    <style name="txt_home">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- TEXTVIEW LONGO - CENTRALIZADO -->
+    <style name="txt_longos_center">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- TEXTVIEW LONGO - START -->
+    <style name="txt_longos_start">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">20dp</item>
+    </style>
 </resources>

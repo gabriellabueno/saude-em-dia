@@ -6,17 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".view.sugestao.SugestaoFragment">
 
-    <TextView
-        android:id="@+id/text_sugestao"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txtSugestoesNutricionais"
+            style="@style/txt_longos_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_sugestoes_nutricionais_gerais" />
+
+        <TextView
+            android:id="@+id/txtSugestoesAlimentares"
+            style="@style/txt_longos_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:text="@string/txt_sugestoes_nutricionais_idosos" />
+
+        <TextView
+            android:id="@+id/txtDicasNutricionais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
