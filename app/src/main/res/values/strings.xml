@@ -17,8 +17,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_manutencao">Manutencao</string>
 
-    <string name="titulo_sugestoes_alimentares">Sugestões Alimentares</string>
-    <string name="titulo_dicas_nutricionais">Dicas Nutricionais</string>
-    <string name="titulo_atividade_fisica">Sugestões de Atividade Física</string>
-
 </resources>

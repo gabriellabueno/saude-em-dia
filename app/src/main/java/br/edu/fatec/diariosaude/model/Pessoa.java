@@ -2,12 +2,17 @@ package br.edu.fatec.diariosaude.model;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import br.edu.fatec.diariosaude.R;
+
 public class Pessoa {
     private Integer id;
     private String nome;
     private Integer idade;
     private float altura;
     private float peso;
+    private float imc;
     private Integer sexo;
     private Integer gestante;
     private Integer sedentario;
@@ -99,7 +104,24 @@ public class Pessoa {
     @NonNull
     @Override
     public String toString() {
-        return "Id: " + id + "Nome: " + nome +  "Idade: " + idade;
+        return "Id: " + id + "Nome: " + nome + "Idade: " + idade;
 
     }
+                // Inner class
+                public class sugestao {
+                    // atributos
+                    private double altura;
+                    private double peso;
+                    private int idade;
+                    private boolean sexo;
+                    private boolean gestante;
+                    private boolean sedentario;
+
+                    // cálculo de IMC -- peso / altura²
+                    public float calculo() {
+                        imc = Pessoa.this.peso / (Pessoa.this.altura * Pessoa.this.altura);
+                        return imc;
+                    }
+
+                }
 }

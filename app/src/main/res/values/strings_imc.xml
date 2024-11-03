@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="imc_obesidade3">Acima de 40,0: Obesidade grau III</string>
-    <string name="imc_obesidade2">Entre 35,0 e 39,9: Obesidade grau II</string>
-    <string name="imc_obesidade1">Entre 30,0 e 34,9: Obesidade grau I</string>
-    <string name="imc_sobrepeso">Entre 25,0 e 29,9: Sobrepeso</string>
-    <string name="imc_normal">Entre 18,6 e 24,9: Normal</string>
-    <string name="imc_abaixo">18,5 ou menos: Abaixo do normal</string>
-</resources>

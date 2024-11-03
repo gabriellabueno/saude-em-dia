@@ -20,57 +20,49 @@
             android:id="@+id/txtSugestoesFixas"
             style="@style/txt_longos_center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_sugestoes_nutricionais_gerais" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtTitulo1"
             style="@style/txt_titulos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/titulo_sugestoes_alimentares" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtSugestoesAlimentares"
             style="@style/txt_longos_start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_sugestoes_alimentares_idosos" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtTitulo2"
             style="@style/txt_titulos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/titulo_dicas_nutricionais" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtDicasNutricionais"
             style="@style/txt_longos_start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_dicas_nutricionais_idosos" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtTitulo3"
             style="@style/txt_titulos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/titulo_atividade_fisica" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtAtividadeFixa"
             style="@style/txt_longos_start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_exercicios_gerais" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/txtAtividadeFisica"
             style="@style/txt_longos_start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_exercicios_idosos" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
