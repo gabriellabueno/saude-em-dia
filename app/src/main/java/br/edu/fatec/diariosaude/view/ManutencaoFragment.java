@@ -1,12 +1,8 @@
-package br.edu.fatec.diariosaude.view.manutencao;
+package br.edu.fatec.diariosaude.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +13,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
 
+import java.text.DecimalFormat;
+
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
-import br.edu.fatec.diariosaude.model.Pessoa;
-import br.edu.fatec.diariosaude.view.cadastro.CadastroViewModel;
+import br.edu.fatec.diariosaude.util.Pessoa;
 
 public class ManutencaoFragment extends Fragment {
 
-    private ManutencaoViewModel viewModel;
-
     // Variáveis para componentes XML
     private EditText edtNome;
+    private EditText edtGenero;
     private EditText edtIdade;
     private EditText edtPeso;
     private EditText edtAltura;
@@ -35,9 +31,6 @@ public class ManutencaoFragment extends Fragment {
     private RadioButton rdbMasculino;
     private RadioButton rdbFeminino;
     private Switch swtGestante;
-    private CheckBox rdbDiabetes;
-    private CheckBox rdbHipertensao;
-    private CheckBox rdbCardiopatia;
     private Button btnAtualizar;
     private Button btnExcluir;
 
@@ -58,16 +51,15 @@ public class ManutencaoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Infla o layout do Fragment
+        // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_manutencao, container, false);
-        // Inicializa a ViewModel associada ao Fragment
-        viewModel = new ViewModelProvider(this).get(ManutencaoViewModel.class);
 
         // Inicializa Controller
         pessoaController = new PessoaController(this.getContext());
 
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
+        edtGenero = view.findViewById(R.id.edtGenero);
         edtIdade = view.findViewById(R.id.edtIdade);
         edtPeso = view.findViewById(R.id.edtPeso);
         edtAltura = view.findViewById(R.id.edtAltura);
@@ -75,9 +67,6 @@ public class ManutencaoFragment extends Fragment {
         rdbMasculino = view.findViewById(R.id.rdbMasculino);
         rdbFeminino = view.findViewById(R.id.rdbFeminino);
         swtGestante = view.findViewById(R.id.swtGestante);
-        rdbDiabetes = view.findViewById(R.id.rdbDiabetes);
-        rdbHipertensao = view.findViewById(R.id.rdbHipertensao);
-        rdbCardiopatia = view.findViewById(R.id.rdbCardiopatia);
         btnAtualizar = view.findViewById(R.id.btnAtualizar);
         btnExcluir = view.findViewById(R.id.btnExcluir);
 
@@ -89,13 +78,43 @@ public class ManutencaoFragment extends Fragment {
         // Busca dados a partir do ID e armazena em instância de Pessoa
         pessoa = pessoaController.read(pessoaSelecionadaID);
 
+
+        swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
+
+        // RADIO BUTTON FEMININO
+        // Listener para mudanças na seleção dos RadioButtons
+        rdbFeminino.setOnCheckedChangeListener(
+                (compoundButton, b) -> {
+                    if(rdbFeminino.isChecked()) {
+                        swtGestante.setVisibility(View.VISIBLE);
+                        sexo = 1;
+                    } else {
+                        swtGestante.setVisibility(View.GONE);
+                        sexo = 0;
+                    }
+                }
+        );
+
+        // SWITCH GESTANTE
+        swtGestante.setOnCheckedChangeListener((compoundButton, b) -> {
+            gestante = swtGestante.isChecked() ? 1 : 0;
+        });
+
+
+        // SWITCH SEDENTARIO
+        swtSedentario.setOnCheckedChangeListener((compoundButton, b) -> {
+            sedentario = swtSedentario.isChecked() ? 1 : 0;
+        });
+
+
+
         // Preenche campos de inputs com os dados retornados
-        setInputs(pessoa);
+        preencheCamposEdt(pessoa);
 
 
         // Botão Atualizar
         btnAtualizar.setOnClickListener(v -> {
-            pessoa = getInputs();
+            pessoa = recebeInputs();
             pessoa.setId(pessoaSelecionadaID);
             pessoaController.update(pessoa);
             pessoaController.mostrarMensagem("atualizada");
@@ -108,8 +127,8 @@ public class ManutencaoFragment extends Fragment {
             pessoa.setId(pessoaSelecionadaID);
             pessoaController.delete(pessoa);
             pessoaController.mostrarMensagem("removida");
+            limpaCamposEdt();
         });
-
 
 
         return view;
@@ -122,13 +141,14 @@ public class ManutencaoFragment extends Fragment {
 
 
     // Recebe dados do usuário e armazena em nova instância de Pessoa
-    public Pessoa getInputs() {
+    public Pessoa recebeInputs() {
         pessoa = new Pessoa();
 
         pessoa.setNome(edtNome.getText().toString());
+        pessoa.setGenero(edtGenero.getText().toString());
         pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
         pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
-        pessoa.setPeso(Float.parseFloat(edtPeso.getText().toString()));
+        pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
         pessoa.setSexo(sexo);
         pessoa.setGestante(gestante);
         pessoa.setSedentario(sedentario);
@@ -137,23 +157,44 @@ public class ManutencaoFragment extends Fragment {
     }
 
     // Preenche campos de inputs com os dados da pessoa para Manutencao
-    public void setInputs(Pessoa pessoa) {
+    public void preencheCamposEdt(Pessoa pessoa) {
         edtNome.setText(pessoa.getNome());
+        edtGenero.setText(pessoa.getGenero());
         edtIdade.setText(String.valueOf(pessoa.getIdade()));
-        edtAltura.setText(String.valueOf(pessoa.getAltura()));
+
+        String alturaFormatada = new DecimalFormat("#.00").format(pessoa.getAltura());
+        edtAltura.setText(alturaFormatada);
+
         edtPeso.setText(String.valueOf(pessoa.getPeso()));
 
-        if(pessoa.getSexo() == 1)
+        if(pessoa.getSexo() == 1) {
             rdbFeminino.setChecked(true);
-        else
-            rdbMasculino.setChecked(true);
-
-        if(pessoa.isGestante() == 1)
             swtGestante.setVisibility(View.VISIBLE);
+        } else {
+            rdbMasculino.setChecked(true);
+            swtGestante.setVisibility(View.GONE);
+        }
+
+        if(pessoa.isGestante() == 1) {
+            swtGestante.setChecked(true);
+        }
 
         if(pessoa.isSedentario() == 1)
             swtSedentario.setChecked(true);
     }
+
+    public void limpaCamposEdt() {
+        edtNome.setText(null);
+        edtGenero.setText(null);
+        edtIdade.setText(null);
+        edtAltura.setText(null);
+        edtPeso.setText(null);
+        swtGestante.setVisibility(View.GONE);
+        rdbFeminino.setChecked(false);
+        rdbMasculino.setChecked(false);
+        swtSedentario.setChecked(false);
+    }
+
 
 
 }

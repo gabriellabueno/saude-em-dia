@@ -20,8 +20,9 @@ public class ConnectionFactory extends SQLiteOpenHelper {
         String query = "CREATE TABLE pessoa(id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "nome VARCHAR(100), "
                 + "idade INTEGER, "
-                + "altura DECIMAL, "
-                + "peso DECIMAL, "
+                + "altura DECIMAL(5,2), "
+                + "peso DECIMAL(5,2), "
+                + "genero VARCHAR(50), "
                 + "sexo INTEGER, "
                 + "gestante INTEGER, "
                 + "sedentario INTEGER)";

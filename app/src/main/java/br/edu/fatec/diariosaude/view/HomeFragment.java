@@ -1,7 +1,6 @@
-package br.edu.fatec.diariosaude.view.home;
+package br.edu.fatec.diariosaude.view;
 
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 import br.edu.fatec.diariosaude.R;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel viewModel;
 
     Button btnComecar;
     TextView txtHome;
@@ -27,10 +22,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        // Infla o layout do Fragment
+        // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        // Inicializa a ViewModel associada ao Fragment
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
 
         btnComecar = view.findViewById(R.id.btnComecar);

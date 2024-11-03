@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.edu.fatec.diariosaude.model.Pessoa;
+import br.edu.fatec.diariosaude.util.Pessoa;
 import br.edu.fatec.diariosaude.model.PessoaDAO;
 
 public class PessoaController {

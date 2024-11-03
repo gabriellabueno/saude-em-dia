@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view.controle;
+package br.edu.fatec.diariosaude.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -15,11 +14,11 @@ import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
-import br.edu.fatec.diariosaude.model.Pessoa;
+import br.edu.fatec.diariosaude.util.Pessoa;
+import br.edu.fatec.diariosaude.view.adapter.PessoaAdapter;
 
 public class ControleFragment extends Fragment {
 
-    private ControleViewModel viewModel;
     private ListView listViewControle;
 
     // Variáveis para Controller
@@ -32,10 +31,8 @@ public class ControleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        // Infla o layout do Fragment
+        // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_controle, container, false);
-        // Inicializa a ViewModel associada ao Fragment
-        viewModel = new ViewModelProvider(this).get(ControleViewModel.class);
 
         // Inicializando o controller
         controller = new PessoaController(this.getContext());

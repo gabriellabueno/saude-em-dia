@@ -2,7 +2,7 @@ package br.edu.fatec.diariosaude.controller;
 
 import android.content.Context;
 
-import br.edu.fatec.diariosaude.model.Sugestao;
+import br.edu.fatec.diariosaude.util.Sugestao;
 import br.edu.fatec.diariosaude.model.SugestaoDAO;
 
 

@@ -1,36 +1,38 @@
-package br.edu.fatec.diariosaude.model;
+package br.edu.fatec.diariosaude.util;
 
 import androidx.annotation.NonNull;
-
-import com.google.android.material.textfield.TextInputEditText;
-
-import br.edu.fatec.diariosaude.R;
 
 public class Pessoa {
     private Integer id;
     private String nome;
     private Integer idade;
-    private float altura;
-    private float peso;
-    private float imc;
+    private Float altura;
+    private Double peso;
+    private String genero;
     private Integer sexo;
     private Integer gestante;
     private Integer sedentario;
+    private Double imc;
+    private Sugestao sugestao;
 
 
-    // CONTRUTORES
+    // CONSTRUTORES
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, int idade, float altura, float peso, Integer sexo, Integer gestante, Integer sedentario) {
+    public Pessoa(Integer id, String nome, int idade, Float altura, Double peso, String genero,
+                  Integer sexo, Integer gestante, Integer sedentario, Double imc, Sugestao sugestao) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.altura = altura;
         this.peso = peso;
         this.sexo = sexo;
+        this.genero = genero;
         this.gestante = gestante;
         this.sedentario = sedentario;
+        this.imc = null;
+        this.sugestao = sugestao;
     }
 
 
@@ -51,6 +53,10 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    public Integer getGestante() {
+        return gestante;
+    }
+
     public Integer getIdade() {
         return idade;
     }
@@ -59,20 +65,28 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public float getAltura() {
+    public Float getAltura() {
         return altura;
     }
 
-    public void setAltura(float altura) {
+    public void setAltura(Float altura) {
         this.altura = altura;
     }
 
-    public float getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public Integer getSexo() {
@@ -100,28 +114,35 @@ public class Pessoa {
         this.sedentario = sedentario;
     }
 
+
+    public Integer getSedentario() {
+        return sedentario;
+    }
+
+    public Double getImc() {
+        return imc;
+    }
+
+    public Double calculaIMC() {
+        this.imc = (this.peso / (this.altura * this.altura));
+        return imc;
+    }
+
+    public void geraSugestao() {
+
+    }
+
+    public Sugestao getSugestao() {
+        return sugestao;
+    }
+
+
+
     // Sobrescreve método toString() para apresentar dados no ListView
     @NonNull
     @Override
     public String toString() {
         return "Id: " + id + "Nome: " + nome + "Idade: " + idade;
-
     }
-                // Inner class
-                public class sugestao {
-                    // atributos
-                    private double altura;
-                    private double peso;
-                    private int idade;
-                    private boolean sexo;
-                    private boolean gestante;
-                    private boolean sedentario;
 
-                    // cálculo de IMC -- peso / altura²
-                    public float calculo() {
-                        imc = Pessoa.this.peso / (Pessoa.this.altura * Pessoa.this.altura);
-                        return imc;
-                    }
-
-                }
 }

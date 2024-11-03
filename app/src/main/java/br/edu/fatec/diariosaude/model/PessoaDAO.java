@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.fatec.diariosaude.util.Pessoa;
+
 public class PessoaDAO {
     // Variáveis de Conexão
     private ConnectionFactory conexao;
@@ -20,10 +22,11 @@ public class PessoaDAO {
     private static final String idade = "idade";
     private static final String altura = "altura";
     private static final String peso = "peso";
+    private static final String genero = "genero";
     private static final String sexo = "sexo";
     private static final String gestante = "gestante";
-    private static final String sedentario = "peso";
-    String[] args = {id, nome, idade, altura, peso, sexo, gestante, sedentario};
+    private static final String sedentario = "sedentario";
+    String[] args = {id, nome, idade, altura, peso, genero, sexo, gestante, sedentario};
 
     // Construtor
     public PessoaDAO(Context context){
@@ -35,18 +38,19 @@ public class PessoaDAO {
     // MÉTODOS CRUD - CREATE, READ, UPDATE, DELETE
 
     // CREATE
-    public long create(Pessoa pessoa){
+    public void create(Pessoa pessoa){
         ContentValues values = new ContentValues();
 
         values.put(nome, pessoa.getNome());
         values.put(idade, pessoa.getIdade());
         values.put(altura, pessoa.getAltura());
         values.put(peso, pessoa.getPeso());
+        values.put(genero, pessoa.getGenero());
         values.put(sexo, pessoa.getSexo());
         values.put(gestante, pessoa.isGestante());
         values.put(sedentario, pessoa.isSedentario());
 
-        return banco.insert(table, null, values);
+        banco.insert(table, null, values);
     }
 
     // UPDATE
@@ -57,7 +61,10 @@ public class PessoaDAO {
         values.put(idade, pessoa.getIdade());
         values.put(altura, pessoa.getAltura());
         values.put(peso, pessoa.getPeso());
+        values.put(genero, pessoa.getGenero());
         values.put(sexo, pessoa.getSexo());
+        values.put(gestante, pessoa.isGestante());
+        values.put(sedentario, pessoa.isSedentario());
 
         String[] idPessoa = {String.valueOf(pessoa.getId())};
 
@@ -81,7 +88,7 @@ public class PessoaDAO {
 
     // READ
     public Pessoa read(Integer id) {
-        String idPessoa[] = {String.valueOf(id)};
+        String[] idPessoa = {String.valueOf(id)};
 
         Cursor cursor = banco.query(table, args,
                 "id=?", idPessoa, null, null, null);
@@ -95,11 +102,13 @@ public class PessoaDAO {
             pessoa.setNome(cursor.getString(1));
             pessoa.setIdade(cursor.getInt(2));
             pessoa.setAltura(cursor.getFloat(3));
-            pessoa.setPeso(cursor.getFloat(4));
-            pessoa.setSexo(cursor.getInt(5));
-            pessoa.setGestante(cursor.getInt(6));
-            pessoa.setSedentario(cursor.getInt(7));
+            pessoa.setPeso(cursor.getDouble(4));
+            pessoa.setGenero(cursor.getString(5));
+            pessoa.setSexo(cursor.getInt(6));
+            pessoa.setGestante(cursor.getInt(7));
+            pessoa.setSedentario(cursor.getInt(8));
         }
+        cursor.close();
         return pessoa;
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.HomeFragment">
+    tools:context=".view.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/txtHome"
             style="@style/txt_home"
-            android:text="@string/txt_introducao" />
+            android:text="" />
 
         <Button
             android:id="@+id/btnComecar"

@@ -5,12 +5,10 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-
-
     <fragment
         android:id="@+id/nav_home"
-        android:name="br.edu.fatec.diariosaude.view.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="br.edu.fatec.diariosaude.view.HomeFragment"
+        android:label="@string/str_home"
         tools:layout="@layout/fragment_home">
     <action
         android:id="@+id/action_home_to_cadastro"
@@ -19,8 +17,8 @@
 
     <fragment
         android:id="@+id/nav_controle"
-        android:name="br.edu.fatec.diariosaude.view.controle.ControleFragment"
-        android:label="@string/menu_controle"
+        android:name="br.edu.fatec.diariosaude.view.ControleFragment"
+        android:label="@string/str_controle"
         tools:layout="@layout/fragment_controle">
         <action
             android:id="@+id/action_controle_to_manutencao"
@@ -29,20 +27,20 @@
 
     <fragment
         android:id="@+id/nav_cadastro"
-        android:name="br.edu.fatec.diariosaude.view.cadastro.CadastroFragment"
-        android:label="@string/menu_cadastro"
+        android:name="br.edu.fatec.diariosaude.view.CadastroFragment"
+        android:label="@string/str_cadastro"
         tools:layout="@layout/fragment_cadastro" />
 
     <fragment
         android:id="@+id/nav_sugestao"
-        android:name="br.edu.fatec.diariosaude.view.sugestao.SugestaoFragment"
-        android:label="@string/menu_sugestoes"
+        android:name="br.edu.fatec.diariosaude.view.SugestaoFragment"
+        android:label="@string/str_sugestoes"
         tools:layout="@layout/fragment_sugestao" />
 
     <fragment
         android:id="@+id/nav_manutencao"
-        android:name="br.edu.fatec.diariosaude.view.manutencao.ManutencaoFragment"
-        android:label="Manutenção" >
+        android:name="br.edu.fatec.diariosaude.view.ManutencaoFragment"
+        android:label="@string/str_manutencao" >
         <argument
             android:name="pessoaSelecionadaID"
             app:argType="integer" />
