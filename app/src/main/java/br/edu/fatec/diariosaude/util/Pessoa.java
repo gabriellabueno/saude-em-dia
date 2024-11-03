@@ -53,10 +53,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Integer getGestante() {
-        return gestante;
-    }
-
     public Integer getIdade() {
         return idade;
     }
@@ -109,32 +105,28 @@ public class Pessoa {
         return sedentario;
     }
 
-
     public void setSedentario(Integer sedentario) {
         this.sedentario = sedentario;
     }
 
-
-    public Integer getSedentario() {
-        return sedentario;
-    }
 
     public Double getImc() {
         return imc;
     }
 
     public Double calculaIMC() {
-        this.imc = (this.peso / (this.altura * this.altura));
+        imc = peso / Math.pow(altura, 2);
         return imc;
     }
 
-    public void geraSugestao() {
-
+    public void setSugestao() {
+        sugestao = sugestao.geraSugestao(imc, sedentario, gestante);
     }
 
     public Sugestao getSugestao() {
         return sugestao;
     }
+
 
 
 
