@@ -20,21 +20,22 @@ public class Sugestao {
 
 
     // MÉTODOS
-    public Sugestao geraSugestao(Double imc, Integer sedentario, Integer gestante) {
+    public Sugestao geraSugestao(Double imc, Integer sedentario, Integer gestante, Integer idade) {
 
         Sugestao sugestao = new Sugestao();
 
+        // ARRUMAR ESSA LÓGICA:
         if(imc >= 25) {
             sugestao.sugestaoIMC = geraSugestaoIMC(imc);
         }
 
         if(sedentario == 1) {
             sugestao.sugestaoNutricao = geraSugestaoNutricao();
-            sugestao.sugestaoExercicio = geraSugestaoExercicio();
+            sugestao.sugestaoExercicio = geraSugestaoExercicio(idade);
         }
 
         if(gestante == 1)
-            sugestao.sugestaoGestante = geraSugestaoGestante();
+            sugestao.sugestaoGestante = geraSugestaoGestante(imc);
 
         return sugestao;
     }
@@ -44,21 +45,39 @@ public class Sugestao {
         String sugestao = "";
 
 
-        if (imc <= 29.9) {
+        if (imc <= 18.5) {
+            // Abaixo do peso
+            sugestao = IMC.ABAIXO.getMessage();
+        } else if (imc >= 18.6 && imc <= 24.9) {
+            //Normal
+            sugestao = IMC.NORMAL.getMessage();
+        } else if (imc >= 25 && imc <= 29.9) {
             // Sobrepeso
-        } else if(imc >= 30 && imc <= 34.9) {
+            sugestao = IMC.SOBREPESO.getMessage();
+        } else if (imc >= 30 && imc <= 34.9) {
             //  Obesidade grau I
-        } else if(imc >= 35 && imc <= 39.0) {
+            sugestao = IMC.OBESIDADE1.getMessage();
+        } else if (imc >= 35 && imc <= 39.0) {
             // Obesidade grau II
+            sugestao = IMC.OBESIDADE2.getMessage();
         } else {
             //  Obesidade grau III
+            sugestao = IMC.OBESIDADE3.getMessage();
         }
 
         return sugestao;
     }
 
-    public String geraSugestaoExercicio() {
+    public String geraSugestaoExercicio(Integer idade) {
+
         String sugestao = "";
+
+        if (idade < 65) {
+            //Adultos
+        } else {
+            //Idosos
+        }
+
         return sugestao;
     }
 
@@ -67,8 +86,31 @@ public class Sugestao {
         return sugestao;
     }
 
-    public String geraSugestaoGestante() {
+    public String geraSugestaoGestante(Double imc) {
+
         String sugestao = "";
+
+
+        if (imc <= 18.5) {
+            // Grávidas abaixo do peso
+
+        } else if (imc >= 18.6 && imc <= 24.9) {
+            // Grávidas com peso normal
+
+        } else if (imc >= 25 && imc <= 29.9) {
+            // Grávidas com sobrepeso
+
+        } else if (imc >= 30 && imc <= 34.9) {
+            // Grávidas com obesidade grau I
+
+        } else if (imc >= 35 && imc <= 39.0) {
+            // Grávidas com obesidade grau II
+
+        } else {
+            // Grávidas com obesidade grau III
+
+        }
+
         return sugestao;
     }
 

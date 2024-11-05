@@ -120,7 +120,7 @@ public class Pessoa {
     }
 
     public void setSugestao() {
-        sugestao = sugestao.geraSugestao(imc, sedentario, gestante);
+        sugestao = sugestao.geraSugestao(imc, sedentario, gestante, idade);
     }
 
     public Sugestao getSugestao() {

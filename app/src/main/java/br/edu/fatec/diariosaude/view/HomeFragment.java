@@ -12,9 +12,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import br.edu.fatec.diariosaude.R;
+import br.edu.fatec.diariosaude.util.IMC;
 
 public class HomeFragment extends Fragment {
-
 
     Button btnComecar;
     TextView txtHome;
@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
 
 
         btnComecar = view.findViewById(R.id.btnComecar);
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment {
                 "        Prepare-se para transformar sua saúde e bem-estar de forma simples e eficaz.\\n<b>Vamos juntos nessa jornada!</b>";
         edtIntroducao.setText(Html.fromHtml(htmlText, Html.FROM_HTML_MODE_LEGACY));
         */
+
 
 
         // BOTÃO COMEÇAR

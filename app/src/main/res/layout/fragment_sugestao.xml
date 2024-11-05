@@ -8,61 +8,71 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:fillViewport="true"> <!-- Atributo para o conteúdo interno ficar na mesma altura da tela -->
 
-        <TextView
-            android:id="@+id/txtSugestoesFixas"
-            style="@style/txt_longos_center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        <TextView
-            android:id="@+id/txtTitulo1"
-            style="@style/txt_titulos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtSugestoesFixas"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 1" />
 
-        <TextView
-            android:id="@+id/txtSugestoesAlimentares"
-            style="@style/txt_longos_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtTitulo1"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 2" />
 
-        <TextView
-            android:id="@+id/txtTitulo2"
-            style="@style/txt_titulos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtSugestoesAlimentares"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 3" />
 
-        <TextView
-            android:id="@+id/txtDicasNutricionais"
-            style="@style/txt_longos_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtTitulo2"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 4" />
 
-        <TextView
-            android:id="@+id/txtTitulo3"
-            style="@style/txt_titulos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtDicasNutricionais"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 5" />
 
-        <TextView
-            android:id="@+id/txtAtividadeFixa"
-            style="@style/txt_longos_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/txtTitulo3"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 6" />
 
-        <TextView
-            android:id="@+id/txtAtividadeFisica"
-            style="@style/txt_longos_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/txtAtividadeFixa"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 7" />
+
+                <TextView
+                    android:id="@+id/txtAtividadeFisica"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Texto 8" />
+
+            </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
