@@ -9,16 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
         android:gravity="center"
-        >
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/txtSaudeEmDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:fontFamily="@font/aboreto"
             android:text="@string/app_name"
             android:textColor="@color/cor_primaria"
@@ -29,19 +27,18 @@
             android:id="@+id/imgHome"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/ic_home"
             android:layout_marginBottom="20dp"
-            />
+            android:src="@drawable/ic_home" />
 
         <TextView
-            android:id="@+id/txtHome"
+            android:id="@+id/txtIntroducao"
             style="@style/txt_home"
-            android:text="" />
+            android:text=""
+            android:textAlignment="textStart" />
 
         <Button
             android:id="@+id/btnComecar"
             style="@style/botao"
-            android:layout_marginTop="20dp"
             android:text="Começar" />
 
 

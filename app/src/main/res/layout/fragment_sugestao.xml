@@ -25,11 +25,25 @@
                     android:text="Texto 1" />
 
                 <TextView
-                    android:id="@+id/txtTitulo1"
-                    style="@style/txt_longos_center"
+                    android:id="@+id/txtIndice_IMC"
+                    style="@style/txt_titulos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Texto 2" />
+                    android:text="INDICE IMC" />
+
+                <TextView
+                    android:id="@+id/txtIMC"
+                    style="@style/txt_legenda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="IMC" />
+
+                <TextView
+                    android:id="@+id/txtTitulo1"
+                    style="@style/txt_titulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sugestões Alimentares" />
 
                 <TextView
                     android:id="@+id/txtSugestoesAlimentares"
@@ -39,25 +53,11 @@
                     android:text="Texto 3" />
 
                 <TextView
-                    android:id="@+id/txtTitulo2"
-                    style="@style/txt_longos_center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Texto 4" />
-
-                <TextView
-                    android:id="@+id/txtDicasNutricionais"
-                    style="@style/txt_longos_center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Texto 5" />
-
-                <TextView
                     android:id="@+id/txtTitulo3"
-                    style="@style/txt_longos_center"
+                    style="@style/txt_titulos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Texto 6" />
+                    android:text="Atividade Física" />
 
                 <TextView
                     android:id="@+id/txtAtividadeFixa"
@@ -72,6 +72,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Texto 8" />
+
+                <TextView
+                    android:id="@+id/txtGravida"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/txtSedentario"
+                    style="@style/txt_longos_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/btnSugestao"
+                    style="@style/botao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gerar Sugestão" />
 
             </LinearLayout>
     </ScrollView>
