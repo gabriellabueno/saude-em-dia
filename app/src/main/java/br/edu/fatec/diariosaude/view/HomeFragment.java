@@ -18,6 +18,7 @@ public class HomeFragment extends Fragment {
 
     Button btnComecar;
     TextView txtIntroducao;
+    String frase1, frase2, frase3, frase4, frase5;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -26,9 +27,14 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-
         btnComecar = view.findViewById(R.id.btnComecar);
         txtIntroducao = view.findViewById((R.id.txtIntroducao));
+        frase1 = "Atividades físicas quando praticadas regularmente trazem inúmeros benefícios para a saúde corporal e mental.";
+        frase2 = "É necessário uma alimentação equilibrada para o bom funcionamento do organismo, tanto do corpo quanto da mente.";
+        frase3 = "Deve-se começar com pequenas quantidades de atividade física e aumentar gradualmente a frequência, intensidade e a duração.";
+        frase4 = "Qualquer quantidade de atividade física é melhor do que nenhuma, e quanto mais, melhor.";
+        frase5 = "A ciência demonstra a importância da alimentação saudável e da nutrição de crianças antes mesmo do nascimento.";
+
 
         // Insere texto no TextView (txtIntroducao)
         String htmlText = "<div style='text-align: left;'>" +
@@ -44,9 +50,6 @@ public class HomeFragment extends Fragment {
                 "        <b>Vamos juntos nessa jornada!</b>" +
                 "        </div>";
         txtIntroducao.setText(Html.fromHtml(htmlText, Html.FROM_HTML_MODE_LEGACY));
-
-        // USANDO CLASSE ENUM, MAS FICA TOTALMENTE SEM FORMATAÇÃO
-        //txtIntroducao.setText(Fixas.INTRODUCAO.getMessage());
 
 
 

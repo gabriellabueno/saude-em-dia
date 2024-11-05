@@ -2,117 +2,115 @@ package br.edu.fatec.diariosaude.util;
 
 public class Sugestao {
 
-    private String sugestaoIMC;
-    private String sugestaoExercicio;
-    private String sugestaoNutricao;
-    private String sugestaoGestante;
+    private String indiceImc;
+    private String sugestaoNutricional;
+    private String sugestaoAtvFisica;
+
 
     // CONSTRUTORES
     public Sugestao() {
     }
 
-    public Sugestao(String sugestaoIMC, String sugestaoNutricao, String sugestaoExercicio, String sugestaoGestante) {
-        this.sugestaoIMC = sugestaoIMC;
-        this.sugestaoNutricao = sugestaoNutricao;
-        this.sugestaoExercicio = sugestaoExercicio;
-        this.sugestaoGestante = sugestaoGestante;
+    public Sugestao(String indiceImc, String sugestaoNutricional, String sugestaoAtvFisica) {
+        this.indiceImc = indiceImc;
+        this.sugestaoNutricional = sugestaoNutricional;
+        this.sugestaoAtvFisica = sugestaoAtvFisica;
     }
-
 
     // MÉTODOS
     public Sugestao geraSugestao(Double imc, Integer sedentario, Integer gestante, Integer idade) {
 
         Sugestao sugestao = new Sugestao();
 
-        // ARRUMAR ESSA LÓGICA:
-        if(imc >= 25) {
-            sugestao.sugestaoIMC = geraSugestaoIMC(imc);
+        sugestao.sugestaoNutricional = geraSugestaoNutricional(imc);
+
+        if (idade < 65)
+            sugestaoAtvFisica = geraSugestaoAdulto();
+        else if (idade >= 65)
+            sugestaoAtvFisica = geraSugestaoIdoso();
+
+        if (sedentario == 1) {
+            //sugestao.sugestaoNutricao = geraSugestaoAdultos(imc);
+            //sugestao.sugestaoExercicio = geraSugestaoExercicio(idade);
         }
 
-        if(sedentario == 1) {
-            sugestao.sugestaoNutricao = geraSugestaoNutricao();
-            sugestao.sugestaoExercicio = geraSugestaoExercicio(idade);
-        }
-
-        if(gestante == 1)
-            sugestao.sugestaoGestante = geraSugestaoGestante(imc);
+        if (gestante == 1)
+            sugestao.sugestaoAtvFisica = geraSugestaoGestante();
 
         return sugestao;
     }
 
-    public String geraSugestaoIMC(Double imc) {
+    //SUGESTÃO DE ATIVIDADE FÍSICA PARA SEDENTÁRIOS
+    public String geraSugestaoSedentario(Double imc) {
 
         String sugestao = "";
 
+        sugestao = AtividadeFisica.SEDENTARIO.getSugestao();
+
+        return sugestao;
+    }
+
+    //SUGESTÃO DE ATIVIDADE FÍSICA PARA IDOSOS
+    public String geraSugestaoIdoso() {
+
+        String sugestao = "";
+
+        sugestao = AtividadeFisica.IDOSOS.getSugestao();
+
+        return sugestao;
+    }
+
+    //SUGESTÃO DE ATIVIDADE FÍSICA PARA ADULTOS
+    public String geraSugestaoAdulto() {
+
+        String sugestao = "";
+
+        sugestao = AtividadeFisica.ADULTOS.getSugestao();
+
+        return sugestao;
+    }
+
+    //SUGESTÕES DE ATIVIDADE FÍSICA PARA GESTANTES
+    public String geraSugestaoGestante() {
+
+        String sugestao = "";
+
+        sugestao = AtividadeFisica.GRAVIDA.getSugestao();
+
+        return sugestao;
+    }
+
+    //SUGESTÃO NUTRICIONAL GERAL
+    public String geraSugestaoNutricional (Double imc) {
+
+        String sugestao = "";
 
         if (imc <= 18.5) {
             // Abaixo do peso
-            sugestao = IMC.ABAIXO.getMessage();
+            indiceImc = Nutricao.ABAIXO.getIndice();
+            sugestao = Nutricao.ABAIXO.getNutricao();
         } else if (imc >= 18.6 && imc <= 24.9) {
             //Normal
-            sugestao = IMC.NORMAL.getMessage();
+            indiceImc = Nutricao.NORMAL.getIndice();
+            sugestao = Nutricao.NORMAL.getNutricao();
         } else if (imc >= 25 && imc <= 29.9) {
             // Sobrepeso
-            sugestao = IMC.SOBREPESO.getMessage();
+            indiceImc = Nutricao.SOBREPESO.getIndice();
+            sugestao = Nutricao.SOBREPESO.getNutricao();
         } else if (imc >= 30 && imc <= 34.9) {
             //  Obesidade grau I
-            sugestao = IMC.OBESIDADE1.getMessage();
+            indiceImc = Nutricao.OBESIDADE1.getIndice();
+            sugestao = Nutricao.OBESIDADE1.getNutricao();
         } else if (imc >= 35 && imc <= 39.0) {
             // Obesidade grau II
-            sugestao = IMC.OBESIDADE2.getMessage();
+            indiceImc = Nutricao.OBESIDADE2.getIndice();
+            sugestao = Nutricao.OBESIDADE2.getNutricao();
         } else {
             //  Obesidade grau III
-            sugestao = IMC.OBESIDADE3.getMessage();
+            indiceImc = Nutricao.ABAIXO.getIndice();
+            sugestao = Nutricao.OBESIDADE3.getNutricao();
         }
 
         return sugestao;
     }
-
-    public String geraSugestaoExercicio(Integer idade) {
-
-        String sugestao = "";
-
-        if (idade < 65) {
-            //Adultos
-        } else {
-            //Idosos
-        }
-
-        return sugestao;
-    }
-
-    public String geraSugestaoNutricao() {
-        String sugestao = "";
-        return sugestao;
-    }
-
-    public String geraSugestaoGestante(Double imc) {
-
-        String sugestao = "";
-
-
-        if (imc <= 18.5) {
-            // Grávidas abaixo do peso
-
-        } else if (imc >= 18.6 && imc <= 24.9) {
-            // Grávidas com peso normal
-
-        } else if (imc >= 25 && imc <= 29.9) {
-            // Grávidas com sobrepeso
-
-        } else if (imc >= 30 && imc <= 34.9) {
-            // Grávidas com obesidade grau I
-
-        } else if (imc >= 35 && imc <= 39.0) {
-            // Grávidas com obesidade grau II
-
-        } else {
-            // Grávidas com obesidade grau III
-
-        }
-
-        return sugestao;
-    }
-
-
 }

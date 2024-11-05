@@ -127,9 +127,6 @@ public class Pessoa {
         return sugestao;
     }
 
-
-
-
     // Sobrescreve método toString() para apresentar dados no ListView
     @NonNull
     @Override
