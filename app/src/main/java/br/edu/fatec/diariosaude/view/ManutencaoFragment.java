@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -23,27 +22,19 @@ import br.edu.fatec.diariosaude.util.Pessoa;
 public class ManutencaoFragment extends Fragment {
 
     // Variáveis para componentes XML
-    private EditText edtNome;
-    private EditText edtGenero;
-    private EditText edtIdade;
-    private EditText edtPeso;
-    private EditText edtAltura;
+    private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;
     private Switch swtSedentario;
-    private RadioButton rdbMasculino;
-    private RadioButton rdbFeminino;
+    private RadioButton rdbMasculino, rdbFeminino;
     private Switch swtGestante;
-    private Button btnAtualizar;
-    private Button btnExcluir;
+    private Button btnAtualizar, btnExcluir;
 
     // Variáveis para controller:
-    private PessoaController pessoaController;
+    private PessoaController controller;
     private Pessoa pessoa;
 
     // Variáveis para definir valores booleanos
     // Salvos como INT pois o MySQL não aceita booleano
-    private Integer sexo;
-    private Integer gestante;
-    private Integer sedentario;
+    private Integer sexo, gestante, sedentario;
 
     // Variável para manipular pessoa selecionada em Controle
     private Integer pessoaSelecionadaID;
@@ -56,7 +47,7 @@ public class ManutencaoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_manutencao, container, false);
 
         // Inicializa Controller
-        pessoaController = new PessoaController(this.getContext());
+        controller = new PessoaController(this.getContext());
 
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
@@ -77,7 +68,7 @@ public class ManutencaoFragment extends Fragment {
         }
 
         // Busca dados a partir do ID e armazena em instância de Pessoa
-        pessoa = pessoaController.read(pessoaSelecionadaID);
+        pessoa = controller.read(pessoaSelecionadaID);
 
 
         swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
@@ -118,8 +109,8 @@ public class ManutencaoFragment extends Fragment {
             pessoa = recebeInputs();
             if (pessoa != null) {
                 pessoa.setId(pessoaSelecionadaID);
-                pessoaController.update(pessoa);
-                pessoaController.mostrarMensagem("atualizada");
+                controller.update(pessoa);
+                controller.mostrarMensagem("atualizada");
             } else {
                 Toast.makeText(getContext(), "É necessário preencher todos os campos para atualizar.", Toast.LENGTH_LONG).show();
             }
@@ -130,8 +121,8 @@ public class ManutencaoFragment extends Fragment {
         btnExcluir.setOnClickListener(v -> {
             pessoa = new Pessoa();
             pessoa.setId(pessoaSelecionadaID);
-            pessoaController.delete(pessoa);
-            pessoaController.mostrarMensagem("removida");
+            controller.delete(pessoa);
+            controller.mostrarMensagem("removida");
             limpaCamposEdt();
         });
 

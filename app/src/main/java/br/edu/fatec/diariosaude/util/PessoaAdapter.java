@@ -1,4 +1,4 @@
-package br.edu.fatec.diariosaude.view.adapter;
+package br.edu.fatec.diariosaude.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
-import br.edu.fatec.diariosaude.util.Pessoa;
 
 public class PessoaAdapter extends ArrayAdapter<Pessoa> {
     private Context context;

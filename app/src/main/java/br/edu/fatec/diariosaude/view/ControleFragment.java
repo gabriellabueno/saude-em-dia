@@ -15,7 +15,7 @@ import java.util.List;
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
 import br.edu.fatec.diariosaude.util.Pessoa;
-import br.edu.fatec.diariosaude.view.adapter.PessoaAdapter;
+import br.edu.fatec.diariosaude.util.PessoaAdapter;
 
 public class ControleFragment extends Fragment {
 
@@ -26,7 +26,6 @@ public class ControleFragment extends Fragment {
 
     // Adapter para apresentar dados no ListView
     PessoaAdapter adapter;
-
 
 
 

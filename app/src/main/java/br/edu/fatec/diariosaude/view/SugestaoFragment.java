@@ -1,7 +1,6 @@
 package br.edu.fatec.diariosaude.view;
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
 import br.edu.fatec.diariosaude.util.Pessoa;
 import br.edu.fatec.diariosaude.util.Sugestao;
-import br.edu.fatec.diariosaude.view.adapter.PessoaAdapter;
+import br.edu.fatec.diariosaude.util.PessoaAdapter;
 
 public class SugestaoFragment extends Fragment {
 
@@ -37,16 +36,8 @@ public class SugestaoFragment extends Fragment {
         // Apresenta o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_sugestao, container, false);
 
-        listViewSugestao = view.findViewById(R.id.listViewSugestao);
-
         // Inicializando o controller
         controller = new PessoaController(this.getContext());
-
-        // Listar pessoas no ListView
-        List<Pessoa> pessoas = listAll();
-        if(pessoas == null) {
-            controller.updateTable();
-        }
 
         // Variáveis para componentes XML
         edtIMC = view.findViewById(R.id.edtIMC);
@@ -55,21 +46,29 @@ public class SugestaoFragment extends Fragment {
         txtAtvFisica = view.findViewById(R.id.txtAtvFisica);
         txtSedentario = view.findViewById(R.id.txtSedentario);
         layoutSugestoes = view.findViewById(R.id.layout_sugestoes);
+        listViewSugestao = view.findViewById(R.id.listViewSugestao);
 
         layoutSugestoes.setVisibility(View.GONE);
         txtSedentario.setVisibility(View.GONE);
 
+        // Listar pessoas no ListView
+        List<Pessoa> pessoas = listAll();
+        if(pessoas == null) {
+            controller.updateTable();
+        }
 
         // Clica no item da ListView leva para a tela de Manutenção
         listViewSugestao.setOnItemClickListener((parent, v, position, id) -> {
 
             // Obtém o pessoa clicada
             Pessoa pessoaSelecionada = adapter.getItem(position);
+            Integer pessoaID = pessoaSelecionada.getId();
 
-            if(pessoaSelecionada != null) {
-                gerarSugestao(pessoaSelecionada);
+            if(pessoaID != null) {
+                pessoaSelecionada = controller.read(pessoaID);
+                apresentaSugestao(pessoaSelecionada);
+                layoutSugestoes.setVisibility(View.VISIBLE);
             }
-            layoutSugestoes.setVisibility(View.VISIBLE);
 
         });
 
@@ -91,19 +90,23 @@ public class SugestaoFragment extends Fragment {
             controller.updateTable();
     }
 
-    public void gerarSugestao(Pessoa pessoa) {
+    public void apresentaSugestao(Pessoa pessoa) {
+        pessoa.calculaIMC();
         pessoa.setSugestao();
+
         Sugestao sugestao = pessoa.getSugestao();
 
         edtIMC.setText(String.valueOf(pessoa.getImc()));
         edtIndiceIMC.setText(pessoa.getIndiceIMC());
         txtNutricao.setText(sugestao.getSugestaoNutricional());
         txtAtvFisica.setText(sugestao.getSugestaoAtvFisica());
+
         if(pessoa.isSedentario() == 1) {
             txtSedentario.setVisibility(View.VISIBLE);
             txtSedentario.setText(sugestao.getSugestaoSedentario());
         }
     }
+
 
     // Listar todos os alunos na ListvIiew
     public List<Pessoa> listAll() {

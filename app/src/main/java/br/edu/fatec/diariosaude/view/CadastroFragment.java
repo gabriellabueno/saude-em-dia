@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -21,14 +20,9 @@ import br.edu.fatec.diariosaude.util.Pessoa;
 public class CadastroFragment extends Fragment {
     
     // Variáveis para componentes XML
-    private EditText edtNome;
-    private EditText edtGenero;
-    private EditText edtIdade;
-    private EditText edtAltura;
-    private EditText edtPeso;
+    private EditText edtNome, edtGenero, edtIdade, edtAltura, edtPeso;
     private Switch swtSedentario;
-    private RadioButton rdbMasculino;
-    private RadioButton rdbFeminino;
+    private RadioButton rdbMasculino, rdbFeminino;
     private Switch swtGestante;
     private Button btnCadastrar;
 
@@ -38,9 +32,7 @@ public class CadastroFragment extends Fragment {
 
     // Variáveis para definir valores booleanos
     // Salvos como INT pois o MySQL não aceita booleano
-    private Integer sexo;
-    private Integer gestante;
-    private Integer sedentario;
+    private Integer sexo, gestante, sedentario;
 
 
     @Override
@@ -49,10 +41,11 @@ public class CadastroFragment extends Fragment {
 
         // Infla o layout do Fragment
         View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
-        // Inicializa a ViewModel associada ao Fragment
 
+        pessoa = new Pessoa();
         // Inicializa Controller
         pessoaController = new PessoaController(this.getContext());
+
 
         // Variáveis para componentes XML
         edtNome = view.findViewById(R.id.edtNome);
@@ -68,6 +61,7 @@ public class CadastroFragment extends Fragment {
 
 
         swtGestante.setVisibility(View.GONE); // switch gestante invisível até selecionar sexo
+
         // RADIO BUTTON FEMININO
         // Listener para mudanças na seleção dos RadioButtons
         rdbFeminino.setOnCheckedChangeListener(

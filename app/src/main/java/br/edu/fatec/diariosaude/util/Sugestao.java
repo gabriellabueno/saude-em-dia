@@ -2,10 +2,7 @@ package br.edu.fatec.diariosaude.util;
 
 public class Sugestao {
 
-    private String indiceImc;
-    private String sugestaoNutricional;
-    private String sugestaoAtvFisica;
-    private String sugestaoSedentario;
+    private String indiceImc, sugestaoNutricional, sugestaoAtvFisica, sugestaoSedentario;
 
 
     // CONSTRUTORES
@@ -38,69 +35,40 @@ public class Sugestao {
 
         sugestaoNutricional = geraSugestaoNutricional(imc);
 
-        if (sedentario == 1) {
-            // SEDENTÁRIO
+        if (sedentario == 1)
             sugestaoSedentario = geraSugestaoSedentario();
-        }
 
-        if (idade >= 65) {
-            //IDOSO
+        if (idade >= 65)
             sugestaoAtvFisica = geraSugestaoIdoso();
-
-        } else {
-
-            if (gestante == 1) {
-                // GESTANTE
-                sugestaoAtvFisica = geraSugestaoGestante();
-            } else {
-                //ADULTO
-                sugestaoAtvFisica = geraSugestaoAdulto();
-            }
+        else {
+            sugestaoAtvFisica = (gestante == 1) ?
+                    geraSugestaoGestante():
+                    geraSugestaoAdulto();
         }
     }
 
     //SUGESTÃO DE ATIVIDADE FÍSICA PARA SEDENTÁRIOS
-    public String geraSugestaoSedentario() {
-
-        String sugestao = "";
-
-        sugestao = AtividadeFisica.SEDENTARIO.getSugestao();
-
-        return sugestao;
+    private String geraSugestaoSedentario() {
+        return AtividadeFisica.SEDENTARIO.getSugestao();
     }
 
     //SUGESTÃO DE ATIVIDADE FÍSICA PARA IDOSOS
-    public String geraSugestaoIdoso() {
-
-        String sugestao = "";
-
-        sugestao = AtividadeFisica.IDOSOS.getSugestao();
-
-        return sugestao;
+    private String geraSugestaoIdoso() {
+        return AtividadeFisica.IDOSOS.getSugestao();
     }
 
     //SUGESTÃO DE ATIVIDADE FÍSICA PARA ADULTOS
-    public String geraSugestaoAdulto() {
-
-        String sugestao = "";
-
-        sugestao = AtividadeFisica.ADULTOS.getSugestao();
-
-        return sugestao;
+    private String geraSugestaoAdulto() {
+        return AtividadeFisica.ADULTOS.getSugestao();
     }
 
     //SUGESTÕES DE ATIVIDADE FÍSICA PARA GESTANTES
-    public String geraSugestaoGestante() {
-
-        String sugestao = "";
-
-        sugestao = AtividadeFisica.GRAVIDA.getSugestao();
-
-        return sugestao;
+    private String geraSugestaoGestante() {
+        return AtividadeFisica.GRAVIDA.getSugestao();
     }
 
     //SUGESTÃO NUTRICIONAL GERAL
-    public String geraSugestaoNutricional (Double imc) {
+    private String geraSugestaoNutricional (Double imc) {
 
         String sugestao = "";
 

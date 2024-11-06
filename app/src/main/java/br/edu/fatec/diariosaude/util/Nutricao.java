@@ -15,8 +15,7 @@ public enum Nutricao {
     OBESIDADE3("IMC ALTO! Obesidade Grau III.",
             "Consuma alimentos ricos em fibras e mantenha a hidratação. \nFaça uma redução calórica rigorosa com opções leves, sempre sob supervisão. \nEvite açúcares e gorduras e busque acompanhamento multidisciplinar com nutricionista e médico.");
 
-    private final String indice;
-    private final String nutricao;
+    private final String indice, nutricao;
 
     private Nutricao(String indice, String message) {
         this.indice = indice;

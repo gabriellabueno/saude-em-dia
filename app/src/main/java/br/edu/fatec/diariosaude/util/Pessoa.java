@@ -3,17 +3,10 @@ package br.edu.fatec.diariosaude.util;
 import androidx.annotation.NonNull;
 
 public class Pessoa {
-    private Integer id;
-    private String nome;
-    private Integer idade;
+    private Integer id, idade, sexo, gestante, sedentario;
+    private String nome, genero, indiceIMC;
     private Float altura;
-    private Double peso;
-    private String genero;
-    private Integer sexo;
-    private Integer gestante;
-    private Integer sedentario;
-    private String indiceIMC;
-    private Double imc;
+    private Double peso, imc;
     private Sugestao sugestao;
 
 
@@ -32,9 +25,9 @@ public class Pessoa {
         this.genero = genero;
         this.gestante = gestante;
         this.sedentario = sedentario;
-        this.imc = null;
-        this.indiceIMC = null;
-        this.sugestao = sugestao;
+        this.imc = 0.0;
+        this.indiceIMC = "";
+        this.sugestao = new Sugestao();
     }
 
 
@@ -112,11 +105,7 @@ public class Pessoa {
     }
 
     public String getIndiceIMC() {
-        return this.sugestao.getIndiceImc();
-    }
-
-    public void setIndiceIMC(String indiceIMC) {
-        this.indiceIMC = indiceIMC;
+        return indiceIMC;
     }
 
     public Double getImc() {
@@ -128,7 +117,9 @@ public class Pessoa {
     }
 
     public void setSugestao() {
-        this.calculaIMC();
+        if (sugestao == null) {
+            sugestao = new Sugestao();
+        }
         sugestao.geraSugestao(imc, sedentario, gestante, idade);
     }
 
