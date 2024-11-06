@@ -18,6 +18,18 @@ public class Sugestao {
     }
 
     // MÉTODOS
+    public String getIndiceImc() {
+        return indiceImc;
+    }
+
+    public String getSugestaoNutricional() {
+        return sugestaoNutricional;
+    }
+
+    public String getSugestaoAtvFisica() {
+        return sugestaoAtvFisica;
+    }
+
     public Sugestao geraSugestao(Double imc, Integer sedentario, Integer gestante, Integer idade) {
 
         Sugestao sugestao = new Sugestao();

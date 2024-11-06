@@ -12,6 +12,7 @@ public class Pessoa {
     private Integer sexo;
     private Integer gestante;
     private Integer sedentario;
+    private String indiceIMC;
     private Double imc;
     private Sugestao sugestao;
 
@@ -21,7 +22,7 @@ public class Pessoa {
     }
 
     public Pessoa(Integer id, String nome, int idade, Float altura, Double peso, String genero,
-                  Integer sexo, Integer gestante, Integer sedentario, Double imc, Sugestao sugestao) {
+                  Integer sexo, Integer gestante, Integer sedentario, Double imc, String indiceIMC, Sugestao sugestao) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -32,6 +33,7 @@ public class Pessoa {
         this.gestante = gestante;
         this.sedentario = sedentario;
         this.imc = null;
+        this.indiceIMC = null;
         this.sugestao = sugestao;
     }
 
@@ -109,17 +111,24 @@ public class Pessoa {
         this.sedentario = sedentario;
     }
 
+    public String getIndiceIMC() {
+        return this.sugestao.getIndiceImc();
+    }
+
+    public void setIndiceIMC(String indiceIMC) {
+        this.indiceIMC = indiceIMC;
+    }
 
     public Double getImc() {
         return imc;
     }
 
-    public Double calculaIMC() {
+    public void calculaIMC() {
         imc = peso / Math.pow(altura, 2);
-        return imc;
     }
 
     public void setSugestao() {
+        this.calculaIMC();
         sugestao = sugestao.geraSugestao(imc, sedentario, gestante, idade);
     }
 
