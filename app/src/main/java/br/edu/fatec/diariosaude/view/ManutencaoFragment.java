@@ -138,18 +138,25 @@ public class ManutencaoFragment extends Fragment {
 
     // Recebe dados do usuário e armazena em nova instância de Pessoa
     public Pessoa recebeInputs() {
-        pessoa = new Pessoa();
-
-        pessoa.setNome(edtNome.getText().toString());
-        pessoa.setGenero(edtGenero.getText().toString());
-        pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
-        pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
-        pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
-        pessoa.setSexo(sexo);
-        pessoa.setGestante(gestante);
-        pessoa.setSedentario(sedentario);
-
-        return pessoa;
+        if (edtNome.getText().toString().isEmpty()
+                || edtIdade.getText().toString().isEmpty()
+                || edtAltura.getText().toString().isEmpty()
+                || edtPeso.getText().toString().isEmpty()
+                || !rdbFeminino.isChecked() && !rdbMasculino.isChecked())
+        {
+            return null;
+        } else {
+            pessoa = new Pessoa();
+            pessoa.setNome(edtNome.getText().toString());
+            pessoa.setGenero(edtGenero.getText().toString());
+            pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
+            pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
+            pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
+            pessoa.setSexo(sexo);
+            pessoa.setGestante(gestante);
+            pessoa.setSedentario(sedentario);
+            return pessoa;
+        }
     }
 
     // Preenche campos de inputs com os dados da pessoa para Manutencao

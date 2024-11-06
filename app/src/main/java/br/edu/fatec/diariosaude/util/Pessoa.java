@@ -108,12 +108,16 @@ public class Pessoa {
         return indiceIMC;
     }
 
+    public void setIndiceIMC() {
+        this.indiceIMC = sugestao.getIndiceImc();
+    }
+
     public Double getImc() {
         return imc;
     }
 
     public void calculaIMC() {
-        imc = peso / Math.pow(altura, 2);
+        imc = (peso / Math.pow(altura, 2)) * 10000;
     }
 
     public void setSugestao() {

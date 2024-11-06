@@ -91,12 +91,13 @@ public class CadastroFragment extends Fragment {
         // BOTÃO CADASTRAR
         btnCadastrar.setOnClickListener(v -> {
             pessoa = recebeInputs();
-            if(pessoa != null) {
+
+            if(pessoa == null) {
+                Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+            } else {
                 pessoaController.create(pessoa);
                 pessoaController.mostrarMensagem("inserida");
                 limpaCamposEdt();
-            } else {
-                Toast.makeText(getContext(), "É necessário preencher todos os campos para cadastrar.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -112,18 +113,27 @@ public class CadastroFragment extends Fragment {
 
     // Recebe dados do usuário e armazena em nova instância de Pessoa
     public Pessoa recebeInputs() {
-        pessoa = new Pessoa();
 
-        pessoa.setNome(edtNome.getText().toString());
-        pessoa.setGenero(edtGenero.getText().toString());
-        pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
-        pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
-        pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
-        pessoa.setSexo(sexo);
-        pessoa.setGestante(gestante);
-        pessoa.setSedentario(sedentario);
+        if (edtNome.getText().toString().isEmpty()
+                || edtIdade.getText().toString().isEmpty()
+                || edtAltura.getText().toString().isEmpty()
+                || edtPeso.getText().toString().isEmpty()
+                || !rdbFeminino.isChecked() && !rdbMasculino.isChecked())
+        {
+            return null;
+        } else {
+            pessoa = new Pessoa();
+            pessoa.setNome(edtNome.getText().toString());
+            pessoa.setGenero(edtGenero.getText().toString());
+            pessoa.setIdade(Integer.parseInt(edtIdade.getText().toString()));
+            pessoa.setAltura(Float.parseFloat(edtAltura.getText().toString()));
+            pessoa.setPeso(Double.parseDouble(edtPeso.getText().toString()));
+            pessoa.setSexo(sexo);
+            pessoa.setGestante(gestante);
+            pessoa.setSedentario(sedentario);
+            return pessoa;
+        }
 
-        return pessoa;
     }
 
     public void limpaCamposEdt() {

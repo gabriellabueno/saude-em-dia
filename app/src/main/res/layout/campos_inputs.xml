@@ -17,8 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:helperText="* Obrigatório"
-            app:helperTextTextColor="@color/red"
             app:startIconDrawable="@drawable/ic_pessoa">
 
             <com.google.android.material.textfield.TextInputEditText

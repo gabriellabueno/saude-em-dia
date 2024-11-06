@@ -97,7 +97,7 @@ public class SugestaoFragment extends Fragment {
         Sugestao sugestao = pessoa.getSugestao();
 
         edtIMC.setText(String.valueOf(pessoa.getImc()));
-        edtIndiceIMC.setText(pessoa.getIndiceIMC());
+        edtIndiceIMC.setText(sugestao.getIndiceImc());
         txtNutricao.setText(sugestao.getSugestaoNutricional());
         txtAtvFisica.setText(sugestao.getSugestaoAtvFisica());
 
