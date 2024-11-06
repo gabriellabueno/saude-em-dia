@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import br.edu.fatec.diariosaude.R;
 import br.edu.fatec.diariosaude.controller.PessoaController;
@@ -96,9 +97,13 @@ public class CadastroFragment extends Fragment {
         // BOTÃO CADASTRAR
         btnCadastrar.setOnClickListener(v -> {
             pessoa = recebeInputs();
-            pessoaController.create(pessoa);
-            pessoaController.mostrarMensagem("inserida");
-            limpaCamposEdt();
+            if(pessoa != null) {
+                pessoaController.create(pessoa);
+                pessoaController.mostrarMensagem("inserida");
+                limpaCamposEdt();
+            } else {
+                Toast.makeText(getContext(), "É necessário preencher todos os campos para cadastrar.", Toast.LENGTH_LONG).show();
+            }
         });
 
 

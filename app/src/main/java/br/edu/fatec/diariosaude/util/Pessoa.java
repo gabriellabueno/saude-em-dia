@@ -129,7 +129,7 @@ public class Pessoa {
 
     public void setSugestao() {
         this.calculaIMC();
-        sugestao = sugestao.geraSugestao(imc, sedentario, gestante, idade);
+        sugestao.geraSugestao(imc, sedentario, gestante, idade);
     }
 
     public Sugestao getSugestao() {

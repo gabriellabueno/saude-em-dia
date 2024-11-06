@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -115,9 +116,13 @@ public class ManutencaoFragment extends Fragment {
         // Botão Atualizar
         btnAtualizar.setOnClickListener(v -> {
             pessoa = recebeInputs();
-            pessoa.setId(pessoaSelecionadaID);
-            pessoaController.update(pessoa);
-            pessoaController.mostrarMensagem("atualizada");
+            if (pessoa != null) {
+                pessoa.setId(pessoaSelecionadaID);
+                pessoaController.update(pessoa);
+                pessoaController.mostrarMensagem("atualizada");
+            } else {
+                Toast.makeText(getContext(), "É necessário preencher todos os campos para atualizar.", Toast.LENGTH_LONG).show();
+            }
         });
 
 

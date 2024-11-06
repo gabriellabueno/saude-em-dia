@@ -5,19 +5,23 @@ public class Sugestao {
     private String indiceImc;
     private String sugestaoNutricional;
     private String sugestaoAtvFisica;
+    private String sugestaoSedentario;
 
 
     // CONSTRUTORES
     public Sugestao() {
     }
 
-    public Sugestao(String indiceImc, String sugestaoNutricional, String sugestaoAtvFisica) {
+    public Sugestao(String indiceImc, String sugestaoNutricional, String sugestaoAtvFisica, String sugestaoSedentario) {
         this.indiceImc = indiceImc;
         this.sugestaoNutricional = sugestaoNutricional;
         this.sugestaoAtvFisica = sugestaoAtvFisica;
+        this.sugestaoSedentario = sugestaoSedentario;
     }
 
     // MÉTODOS
+    public String getSugestaoSedentario() {return sugestaoSedentario;}
+
     public String getIndiceImc() {
         return indiceImc;
     }
@@ -30,30 +34,33 @@ public class Sugestao {
         return sugestaoAtvFisica;
     }
 
-    public Sugestao geraSugestao(Double imc, Integer sedentario, Integer gestante, Integer idade) {
+    public void geraSugestao(Double imc, Integer sedentario, Integer gestante, Integer idade) {
 
-        Sugestao sugestao = new Sugestao();
-
-        sugestao.sugestaoNutricional = geraSugestaoNutricional(imc);
-
-        if (idade < 65)
-            sugestaoAtvFisica = geraSugestaoAdulto();
-        else if (idade >= 65)
-            sugestaoAtvFisica = geraSugestaoIdoso();
+        sugestaoNutricional = geraSugestaoNutricional(imc);
 
         if (sedentario == 1) {
-            //sugestao.sugestaoNutricao = geraSugestaoAdultos(imc);
-            //sugestao.sugestaoExercicio = geraSugestaoExercicio(idade);
+            // SEDENTÁRIO
+            sugestaoSedentario = geraSugestaoSedentario();
         }
 
-        if (gestante == 1)
-            sugestao.sugestaoAtvFisica = geraSugestaoGestante();
+        if (idade >= 65) {
+            //IDOSO
+            sugestaoAtvFisica = geraSugestaoIdoso();
 
-        return sugestao;
+        } else {
+
+            if (gestante == 1) {
+                // GESTANTE
+                sugestaoAtvFisica = geraSugestaoGestante();
+            } else {
+                //ADULTO
+                sugestaoAtvFisica = geraSugestaoAdulto();
+            }
+        }
     }
 
     //SUGESTÃO DE ATIVIDADE FÍSICA PARA SEDENTÁRIOS
-    public String geraSugestaoSedentario(Double imc) {
+    public String geraSugestaoSedentario() {
 
         String sugestao = "";
 

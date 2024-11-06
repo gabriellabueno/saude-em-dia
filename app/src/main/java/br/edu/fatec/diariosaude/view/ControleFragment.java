@@ -28,6 +28,8 @@ public class ControleFragment extends Fragment {
     PessoaAdapter adapter;
 
 
+
+
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
