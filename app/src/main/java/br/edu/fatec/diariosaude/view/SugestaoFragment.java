@@ -1,13 +1,16 @@
 package br.edu.fatec.diariosaude.view;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import java.util.List;
@@ -30,6 +33,7 @@ public class SugestaoFragment extends Fragment {
 
     // Variáveis para componentes XML
     private TextView edtIMC, edtIndiceIMC, txtNutricao, txtAtvFisica;
+    private TextView txtReferencia;
     private LinearLayout layoutSugestoes;
 
     public View onCreateView(LayoutInflater inflater,
@@ -53,9 +57,9 @@ public class SugestaoFragment extends Fragment {
         edtIndiceIMC = view.findViewById(R.id.edtIndiceIMC);
         txtNutricao = view.findViewById(R.id.txtNutricao);
         txtAtvFisica = view.findViewById(R.id.txtAtvFisica);
+        txtReferencia = view.findViewById(R.id.txtReferencia);
         layoutSugestoes = view.findViewById(R.id.layout_sugestoes);
-
-        layoutSugestoes.setVisibility(View.GONE);
+        //layoutSugestoes.setVisibility(View.GONE);
 
 
         // Clica no item da ListView leva para a tela de Manutenção
@@ -69,6 +73,10 @@ public class SugestaoFragment extends Fragment {
             }
             layoutSugestoes.setVisibility(View.VISIBLE);
 
+        });
+
+        txtReferencia.setOnClickListener(view1 -> {
+            mostraReferencias();
         });
 
 
@@ -112,4 +120,21 @@ public class SugestaoFragment extends Fragment {
         listViewSugestao.setAdapter(adapter);
         return pessoas;
     }
+
+    private void mostraReferencias() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.popup_referencias);
+
+        dialog.setTitle("Referências");
+
+        Button btnClose = dialog.findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(v -> {
+                dialog.dismiss();
+        });
+
+        // Mostra o diálogo
+        dialog.show();
+    }
+
+
 }
