@@ -117,7 +117,7 @@ public class Pessoa {
     }
 
     public void calculaIMC() {
-        imc = (peso / Math.pow(altura, 2)) * 10000;
+        imc = (peso / Math.pow(altura, 2));
     }
 
     public void setSugestao() {

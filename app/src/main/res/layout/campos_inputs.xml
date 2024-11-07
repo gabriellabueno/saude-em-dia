@@ -106,7 +106,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtAltura"
                         style="@style/edt_input"
-                        android:hint="Altura (cm)"
+                        android:hint="Altura (metros)"
                         android:inputType="numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 

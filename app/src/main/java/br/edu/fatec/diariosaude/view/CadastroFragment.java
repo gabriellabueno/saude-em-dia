@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,20 @@ public class CadastroFragment extends Fragment {
         edtGenero = view.findViewById(R.id.edtGenero);
         edtIdade = view.findViewById(R.id.edtIdade);
         edtAltura = view.findViewById(R.id.edtAltura);
+
+        // Máscara para input altura #.##
+        edtAltura.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+                if (!resultingTxt.matches("^\\d{0,1}(\\.\\d{0,2})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
+
         edtPeso = view.findViewById(R.id.edtPeso);
         swtSedentario = view.findViewById(R.id.swtSedentario);
         rdbMasculino = view.findViewById(R.id.rdbMasculino);
@@ -106,6 +122,10 @@ public class CadastroFragment extends Fragment {
                 }
 
             }
+
+            sexo = 0;
+            gestante = 0;
+            sedentario = 0;
         });
 
 
@@ -155,20 +175,18 @@ public class CadastroFragment extends Fragment {
         swtSedentario.setChecked(false);
     }
 
-
     private void mostraPopup() {
         Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.popup_dialog);
 
         // Configurando os elementos do poup
         TextView title = dialog.findViewById(R.id.popup_title);
-        EditText text = dialog.findViewById(R.id.popup_txt);
+        TextView text = dialog.findViewById(R.id.popup_txt);
         Button button = dialog.findViewById(R.id.popup_button);
 
         title.setText("Aviso");
         text.setText("Para uma melhor experiência esse aplicativo é destinado apenas para pessoas que atingiram a maioridade. " +
-                "\n\nO cálculo de IMC para crinças e jovens depende de outros critérios específicos.");
-
+                "\n\nO cálculo de IMC para crianças e jovens depende de outros critérios específicos.");
 
 
         button.setOnClickListener(v -> {

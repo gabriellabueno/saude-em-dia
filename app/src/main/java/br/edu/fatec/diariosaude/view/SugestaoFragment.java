@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -102,16 +101,17 @@ public class SugestaoFragment extends Fragment {
     }
 
     public void apresentaSugestao(Pessoa pessoa) {
+        limparCampos();
+
         pessoa.calculaIMC();
         pessoa.setSugestao();
-
         Sugestao sugestao = pessoa.getSugestao();
 
         // Formata IMC p/ 2 casas decimais
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         String imc = decimalFormat.format(pessoa.getImc());
-        edtIMC.setText(String.valueOf(imc));
 
+        edtIMC.setText(String.valueOf(imc));
         edtIndiceIMC.setText(sugestao.getIndiceImc());
         txtNutricao.setText(sugestao.getSugestaoNutricional());
         txtAtvFisica.setText(sugestao.getSugestaoAtvFisica());
@@ -158,6 +158,15 @@ public class SugestaoFragment extends Fragment {
         });
 
         dialog.show();
+    }
+
+    public void limparCampos() {
+        edtIMC.setText(null);
+        edtIndiceIMC.setText(null);
+        txtNutricao.setText(null);
+        txtAtvFisica.setText(null);
+        txtSedentario.setText(null);
+        txtSedentario.setVisibility(View.GONE);
     }
 
 }

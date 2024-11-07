@@ -35,16 +35,17 @@ public class Sugestao {
 
         sugestaoNutricional = geraSugestaoNutricional(imc);
 
-        if (sedentario == 1)
-            sugestaoSedentario = geraSugestaoSedentario();
-
         if (idade >= 65)
             sugestaoAtvFisica = geraSugestaoIdoso();
         else {
-            sugestaoAtvFisica = (gestante == 1) ?
-                    geraSugestaoGestante():
-                    geraSugestaoAdulto();
+            if (gestante == 1)
+                sugestaoAtvFisica = geraSugestaoGestante();
+            else
+                sugestaoAtvFisica = geraSugestaoAdulto();
         }
+
+        if (sedentario == 1)
+            sugestaoSedentario = geraSugestaoSedentario();
     }
 
     //SUGESTÃO DE ATIVIDADE FÍSICA PARA SEDENTÁRIOS
@@ -94,7 +95,7 @@ public class Sugestao {
             sugestao = Nutricao.OBESIDADE2.getNutricao();
         } else {
             //  Obesidade grau III
-            indiceImc = Nutricao.ABAIXO.getIndice();
+            indiceImc = Nutricao.OBESIDADE3.getIndice();
             sugestao = Nutricao.OBESIDADE3.getNutricao();
         }
 

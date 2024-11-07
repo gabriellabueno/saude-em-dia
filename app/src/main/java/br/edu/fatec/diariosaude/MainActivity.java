@@ -1,7 +1,6 @@
 package br.edu.fatec.diariosaude;
 
 import android.os.Bundle;
-import android.view.Menu;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_controle, R.id.nav_cadastro, R.id.nav_sugestao)
+                R.id.nav_pagina_inicial, R.id.nav_controle, R.id.nav_cadastro, R.id.nav_sugestao)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_fragment_content_main);

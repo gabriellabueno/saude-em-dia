@@ -1,9 +1,11 @@
 package br.edu.fatec.diariosaude.view;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -55,6 +58,20 @@ public class ManutencaoFragment extends Fragment {
         edtIdade = view.findViewById(R.id.edtIdade);
         edtPeso = view.findViewById(R.id.edtPeso);
         edtAltura = view.findViewById(R.id.edtAltura);
+
+        // Máscara para input altura #.##
+        edtAltura.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) -> {
+            if (end > start) {
+                String resultingTxt = dest.toString().substring(0, dstart) +
+                        source.subSequence(start, end) +
+                        dest.toString().substring(dend);
+                if (!resultingTxt.matches("^\\d{0,1}(\\.\\d{0,2})?$")) {
+                    return "";
+                }
+            }
+            return null;
+        }});
+
         swtSedentario = view.findViewById(R.id.swtSedentario);
         rdbMasculino = view.findViewById(R.id.rdbMasculino);
         rdbFeminino = view.findViewById(R.id.rdbFeminino);
@@ -104,16 +121,25 @@ public class ManutencaoFragment extends Fragment {
         preencheCamposEdt(pessoa);
 
 
-        // Botão Atualizar
+        // BOTÃO ATUALIZAR
         btnAtualizar.setOnClickListener(v -> {
             pessoa = recebeInputs();
-            if (pessoa != null) {
-                pessoa.setId(pessoaSelecionadaID);
-                controller.update(pessoa);
-                controller.mostrarMensagem("atualizada");
+
+            if(pessoa == null) {
+                Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getContext(), "É necessário preencher todos os campos para atualizar.", Toast.LENGTH_LONG).show();
+                if (pessoa.getIdade() <18)
+                    mostraPopup();
+                else {
+                    pessoa.setId(pessoaSelecionadaID);
+                    controller.update(pessoa);
+                    controller.mostrarMensagem("atualizada");
+                }
             }
+
+            sexo = 0;
+            gestante = 0;
+            sedentario = 0;
         });
 
 
@@ -196,6 +222,27 @@ public class ManutencaoFragment extends Fragment {
         rdbFeminino.setChecked(false);
         rdbMasculino.setChecked(false);
         swtSedentario.setChecked(false);
+    }
+
+    private void mostraPopup() {
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.popup_dialog);
+
+        // Configurando os elementos do poup
+        TextView title = dialog.findViewById(R.id.popup_title);
+        TextView text = dialog.findViewById(R.id.popup_txt);
+        Button button = dialog.findViewById(R.id.popup_button);
+
+        title.setText("Aviso");
+        text.setText("Para uma melhor experiência esse aplicativo é destinado apenas para pessoas que atingiram a maioridade. " +
+                "\n\nO cálculo de IMC para crianças e jovens depende de outros critérios específicos.");
+
+
+        button.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
 
