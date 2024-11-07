@@ -142,11 +142,16 @@ public class SugestaoFragment extends Fragment {
 
         // Configurando os elementos do poup
         TextView title = dialog.findViewById(R.id.popup_title);
-        EditText text = dialog.findViewById(R.id.popup_txt);
+        TextView text = dialog.findViewById(R.id.popup_txt);
         Button button = dialog.findViewById(R.id.popup_button);
 
         title.setText("Referências");
-        text.setText("");
+        text.setText("Diretrizes da OMS para atividade física e comportamento sedentário: \nhttps://iris.who.int/bitstream/handle/10665/337001/9789240014886-por.pdf?sequence=102&isAllowed=y#:~:text=Para%20saúde%20e%20bem-estar,dia%20para%20crianças%20e%20adolescentes.\n\n" +
+                "Instituto Nacional de Saúde dos EUA (NIH): \nhttps://www.nhlbi.nih.gov/health-topics/physical-activity\n\n" +
+                "Organização Mundial da Saúde (OMS): \nhttps://www.who.int/news-room/fact-sheets/detail/physical-activity\n\n" +
+                "Organização Mundial da Saúde (OMS) - Nutrição e envelhecimento: \nhttps://www.who.int/news-room/fact-sheets/detail/healthy-ageing\n\n" +
+                "Institutos Nacionais de Saúde (NIH) - National Institute on Aging: \nhttps://www.nia.nih.gov/news/research-focuses-aging-nutrition\n\n" +
+                "Sociedade Brasileira de Geriatria e Gerontologia (SBGG) - Nutrição na terceira idade: \nhttps://www.sbgg.org.br/ ");
 
         button.setOnClickListener(v -> {
             dialog.dismiss();
