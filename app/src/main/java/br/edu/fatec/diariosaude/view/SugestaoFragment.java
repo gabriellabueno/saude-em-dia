@@ -1,9 +1,12 @@
 package br.edu.fatec.diariosaude.view;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +33,7 @@ public class SugestaoFragment extends Fragment {
     // Variáveis para componentes XML
     private TextView edtIMC, edtIndiceIMC, txtNutricao, txtAtvFisica, txtSedentario;
     private LinearLayout layoutSugestoes;
+    private Button btnReferencia;
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class SugestaoFragment extends Fragment {
         txtNutricao = view.findViewById(R.id.txtNutricao);
         txtAtvFisica = view.findViewById(R.id.txtAtvFisica);
         txtSedentario = view.findViewById(R.id.txtSedentario);
+        btnReferencia = view.findViewById(R.id.btnReferencia);
         layoutSugestoes = view.findViewById(R.id.layout_sugestoes);
         listViewSugestao = view.findViewById(R.id.listViewSugestao);
 
@@ -72,6 +77,10 @@ public class SugestaoFragment extends Fragment {
 
         });
 
+        // Mostra referências quando clilca no TextView
+        btnReferencia.setOnClickListener( v -> {
+            mostraPopup();
+        });
 
         return view;
     }
@@ -107,7 +116,6 @@ public class SugestaoFragment extends Fragment {
         }
     }
 
-
     // Listar todos os alunos na ListvIiew
     public List<Pessoa> listAll() {
 
@@ -121,4 +129,24 @@ public class SugestaoFragment extends Fragment {
         listViewSugestao.setAdapter(adapter);
         return pessoas;
     }
+
+    private void mostraPopup() {
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.popup_dialog);
+
+        // Configurando os elementos do poup
+        TextView title = dialog.findViewById(R.id.popup_title);
+        EditText text = dialog.findViewById(R.id.popup_txt);
+        Button button = dialog.findViewById(R.id.popup_button);
+
+        title.setText("Referências");
+        text.setText("");
+
+        button.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
 }

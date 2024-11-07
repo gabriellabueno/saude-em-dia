@@ -1,5 +1,6 @@
 package br.edu.fatec.diariosaude.view;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import br.edu.fatec.diariosaude.R;
@@ -95,9 +97,14 @@ public class CadastroFragment extends Fragment {
             if(pessoa == null) {
                 Toast.makeText(getContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                pessoaController.create(pessoa);
-                pessoaController.mostrarMensagem("inserida");
-                limpaCamposEdt();
+                if (pessoa.getIdade() <18)
+                    mostraPopup();
+                else {
+                    pessoaController.create(pessoa);
+                    pessoaController.mostrarMensagem("inserida");
+                    limpaCamposEdt();
+                }
+
             }
         });
 
@@ -146,6 +153,29 @@ public class CadastroFragment extends Fragment {
         rdbFeminino.setChecked(false);
         rdbMasculino.setChecked(false);
         swtSedentario.setChecked(false);
+    }
+
+
+    private void mostraPopup() {
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.popup_dialog);
+
+        // Configurando os elementos do poup
+        TextView title = dialog.findViewById(R.id.popup_title);
+        EditText text = dialog.findViewById(R.id.popup_txt);
+        Button button = dialog.findViewById(R.id.popup_button);
+
+        title.setText("Aviso");
+        text.setText("Para uma melhor experiência esse aplicativo é destinado apenas para pessoas que atingiram a maioridade. " +
+                "\n\nO cálculo de IMC para crinças e jovens depende de outros critérios específicos.");
+
+
+
+        button.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
 }

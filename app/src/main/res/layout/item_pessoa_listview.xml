@@ -8,11 +8,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
+        android:background="#D5D3D3"
         android:gravity="center_horizontal"
-        android:background="@color/white"
-        >
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <!-- Nome -->
         <TextView
@@ -23,15 +22,13 @@
             android:text="Nome"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <!-- Layout para restate dos itens -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <!-- ID -->
             <LinearLayout
@@ -42,8 +39,7 @@
                 <TextView
                     style="@style/itens_listview"
                     android:text="ID:"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvID"
@@ -60,8 +56,7 @@
                 <TextView
                     style="@style/itens_listview"
                     android:text="Idade:"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvIdade"
