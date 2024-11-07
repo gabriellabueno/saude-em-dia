@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
+import java.text.DecimalFormat;
 import java.util.List;
 
 import br.edu.fatec.diariosaude.R;
@@ -105,7 +107,11 @@ public class SugestaoFragment extends Fragment {
 
         Sugestao sugestao = pessoa.getSugestao();
 
-        edtIMC.setText(String.valueOf(pessoa.getImc()));
+        // Formata IMC p/ 2 casas decimais
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String imc = decimalFormat.format(pessoa.getImc());
+        edtIMC.setText(String.valueOf(imc));
+
         edtIndiceIMC.setText(sugestao.getIndiceImc());
         txtNutricao.setText(sugestao.getSugestaoNutricional());
         txtAtvFisica.setText(sugestao.getSugestaoAtvFisica());
