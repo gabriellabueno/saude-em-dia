@@ -2,13 +2,18 @@
   
 # ❤️‍🩹 Saúde em Dia </h1>
 
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/logo.png" alt="Logo do aplicativo">  
-
 </div>
 
-O projeto "Saúde em Dia" é um aplicativo mobile para dispositivos Android desenvolvido em Java, utilizando o padrão de projeto MVC e o padrão DAO (Data Access Object) para a camada de dados. O aplicativo tem como objetivo fornecer dicas de saúde personalizadas, incluindo recomendações nutricionais e de atividades físicas, com base em informações como idade, IMC (Índice de Massa Corporal), e se o usuário é sedentário ou gestante.
+<a href="https://github.com/gabriellabueno/saude-em-dia">
+ <img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/logo.png" width="250px" alt="Logo do aplicativo" align="right"> 
+</a>
 
-O cadastro está disponível apenas para pessoas que atingiram a maioridade, uma vez que o cálculo de IMC é aplicado apenas a adultos.
+O projeto "Saúde em Dia" é um aplicativo mobile para dispositivos Android. Desenvolvido em Java, utilizando o padrão de projeto MVC e o padrão DAO (Data Access Object) para a camada de dados. 
+
+O aplicativo tem como objetivo fornecer dicas de saúde personalizadas, incluindo recomendações nutricionais e de atividades físicas, com base em informações como idade, IMC (Índice de Massa Corporal), e se o usuário é sedentário ou gestante.
+
+> [!NOTE]  
+> _O cadastro está disponível apenas para pessoas que atingiram a maioridade, uma vez que o cálculo de IMC é aplicado apenas a adultos._
 
 ## ✔️ Funcionalidades
 
@@ -29,28 +34,24 @@ O cadastro está disponível apenas para pessoas que atingiram a maioridade, uma
 
 ### Cadastro
 
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/cadastro.jpg" alt="Tela de Cadastro">  
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/cadastro.jpg" width="300px" alt="Tela de Cadastro">  
 
-### Pessoas Cadastradas
-
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/pessoas-cadastradas.jpg" alt="Tela de Pessoas Cadastradas">  
-
-### Atualizar Cadastro
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/pessoas-cadastradas.jpg" width="300px" alt="Tela de Pessoas Cadastradas">  
     
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/atualizar-cadastro.jpg" alt="Tela de Atualização de Cadastro">  
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/atualizar-cadastro.jpg" width="300px" alt="Tela de Atualização de Cadastro">  
 
 ### Dicas de Saúde
 
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/dica-saude.jpg" alt="Tela de Dicas de Saúde">  
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/dica-saude.jpg" width="300px"  alt="Tela de Dicas de Saúde">  
 
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/referencias.jpg" alt="Popup com Referências">  
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/referencias.jpg" width="300px" alt="Popup com Referências">  
 
 </div>
 
-<h2 align="center">⬇️ Baixe o app!</h2>
+<div align="center">
 
-<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/referencias.jpg" alt="Popup com Referências">  
+## ⬇️ Baixe o app!
 
-[![APK do aplicativo](https://img.shields.io/badge/Baixar%20APK-blue?style=plastic&)](https://github.com/gabriellabueno/saude-em-dia/blob/main/apk/saude-em-dia.apk)  
+[![APK do aplicativo](https://img.shields.io/badge/Baixar%20APK-black?style=for-the-badge&logo=android)](https://github.com/gabriellabueno/saude-em-dia/blob/main/apk/saude-em-dia.apk)  
 
-
+</div>
