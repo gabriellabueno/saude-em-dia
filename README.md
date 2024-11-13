@@ -32,7 +32,9 @@ O aplicativo tem como objetivo fornecer dicas de saúde personalizadas, incluind
 
 <div align="center">
 
-### Cadastro
+### Home e Cadastro de Pessoas
+
+<img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/home.jpeg" width="300px" alt="Tela Inicial">  
 
 <img src="https://github.com/gabriellabueno/saude-em-dia/blob/main/imagens/cadastro.jpg" width="300px" alt="Tela de Cadastro">  
 
