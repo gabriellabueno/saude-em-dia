@@ -12,8 +12,8 @@ O projeto "Saúde em Dia" é um aplicativo mobile para dispositivos Android. Des
 
 O aplicativo tem como objetivo fornecer dicas de saúde personalizadas, incluindo recomendações nutricionais e de atividades físicas, com base em informações como idade, IMC (Índice de Massa Corporal), e se o usuário é sedentário ou gestante.
 
-> [!NOTE]  
-> _O cadastro está disponível apenas para pessoas que atingiram a maioridade, uma vez que o cálculo de IMC é aplicado apenas a adultos._
+> Projeto desenvolvido para a disciplina de Programação para Dispositivos Móveis e apresentado durante a VI Feira do Conhecimento da FATEC Guarulhos.
+
 
 ## ✔️ Funcionalidades
 
