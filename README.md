@@ -1,3 +1,5 @@
+[![English Translation](https://img.shields.io/badge/English%20Translation-2d314a?style=for-the-badge)](https://github.com/gabriellabueno/saude-em-dia/blob/main/README-translation.md) 
+
 <div align="center">
   
 # ❤️‍🩹 Saúde em Dia </h1> 
